@@ -1,0 +1,43 @@
+.top-header {
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr 0.2fr;
+    grid-column-gap: 12px;
+    align-items: center;
+  }
+
+  .inline-div {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 1em;
+  }
+  
+  .cards {
+    padding: 1em;
+  }
+  
+  .cards img {
+    width: 11em;
+    height: 13em;
+    border-radius: 1em;
+  }
+  
+  .cards p {
+    font-weight: bold;
+  }
+  
+  .avatar-img {
+    width: 1.5em !important;
+    height: 1.5em !important;
+  }
+  
+  .text-spn {
+    font-size: 12px;
+    position: relative;
+    bottom: 7px;
+    margin-left: 4px;
+  }
+  
+  .card-split {
+    display: grid;
+    grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr
+  }

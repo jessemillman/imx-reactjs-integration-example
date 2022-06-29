@@ -1,0 +1,43 @@
+.logo {
+    padding-left: 1em;
+    padding-top: 2em;
+    padding-bottom: 4em;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+}
+
+.balance-div {
+    width: 10em;
+    height: 8em;
+    background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
+    border-radius: 12px;
+    margin-left: 2.5em;
+    margin-top: 10em;
+}
+
+.balance-div h5 {
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #e9e0e0;
+}
+
+.inline-text {
+    font-size: 19px;
+    color: white;
+}
+
+.bal-btn {
+    padding: 8px;
+    display: flex;
+    margin-left: 19px;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.main-sidebar {
+    padding: 15px;
+}
