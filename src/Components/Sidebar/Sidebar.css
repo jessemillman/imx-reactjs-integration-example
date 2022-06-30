@@ -1,7 +1,7 @@
 .logo {
     padding-left: 1em;
     padding-top: 0em;
-    padding-bottom: 4em;
+    padding-bottom: 1.5em;
 }
 
 li span {
@@ -15,7 +15,7 @@ li span {
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
     border-radius: 12px;
     margin-left: 1.5em;
-    margin-top: 9em;
+    margin-top: 8em;
     margin-right: 1em;
     padding:0px 10px;
 }
@@ -102,4 +102,19 @@ li span {
 }
 .pointer{
     cursor: pointer;
+}
+
+.connect-btn {
+    height: 35px;
+    border-radius: 2em;
+    font-weight: bold;
+    width: 10em;
+    padding: 8px;
+    background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
+    cursor: pointer;
+}
+
+.sigin-btn{
+    margin-top: 25px;
+    margin-left: 4px;
 }

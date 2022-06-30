@@ -2,11 +2,13 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Link,useNavigate  } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
 import './Sidebar.css';
-
-interface sidebarProps {
+interface Props {
+    setbalanceValue: any,
+    sigin: () => any;
     setSideHandler:(params:boolean)=>any;
 }
-const Sidebar = ({setSideHandler}:sidebarProps) => {
+
+const Sidebar = ({ setbalanceValue,sigin,setSideHandler }: Props) => {
     const [sidebarTab, setSidebarTab] = useState("Listing");
     let navigate=useNavigate()
     const sidebarConfig = [
@@ -44,6 +46,9 @@ const Sidebar = ({setSideHandler}:sidebarProps) => {
         }
 
     ]
+
+
+
     return (
         <div className="main-sidebar">
             <div className='hamburger-div'>
@@ -51,6 +56,11 @@ const Sidebar = ({setSideHandler}:sidebarProps) => {
             </div>
             <div className="logo">
                 <img src={immuLogo} alt="immutableX" />
+                <div className="sigin-btn">
+                    <button className="connect-btn" onClick={sigin} type="button">Connect Wallet</button>
+                </div>
+
+
             </div>
             <ul className="sidebar-options">
                 {
@@ -65,7 +75,7 @@ const Sidebar = ({setSideHandler}:sidebarProps) => {
                 }
             </ul>
             <div className="balance-div">
-                <h5>Your Balance <br></br> <span className="inline-text">{'1,024.31'}</span></h5>
+                <h5>Your Balance <br></br> <span className="inline-text">{setbalanceValue?.balance?.toString()}</span></h5>
                 <div className="eth-div"><span className="eth-icon"><i className='fab fa-ethereum'></i></span>ETH</div>
                 <button className="bal-btn" type="button">
                     <i className="fa fa-plus-circle"></i>

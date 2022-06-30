@@ -1,21 +1,21 @@
 import './App.css';
 import { Link, ImmutableXClient, ImmutableMethodResults } from '@imtbl/imx-sdk';
+// import { Link,  } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { useNavigate ,Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
 import Inventory from './Inventory';
 import Bridging from './Bridging';
 import Sidebar from './Components/Sidebar/Sidebar';
-import testimge from './assets/images/3.jpg';
-import avatar from './assets/images/avatar.png';
 import getRoutes from './Router';
 require('dotenv').config();
 
 
 
 const App = () => {
+  let navigate = useNavigate();
   // initialise Immutable X Link SDK
-  const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
+const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
 
   // general
   const [tab, setTab] = useState('marketplace');
@@ -36,9 +36,11 @@ const App = () => {
 
   // register and/or setup a user
   async function linkSetup(): Promise<void> {
+    // console.log('APP COMPONENT')
     const res = await link.setup({})
     setWallet(res.address)
     setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
+    navigate('/listing')
   };
 
   function handleTabs() {
@@ -75,7 +77,7 @@ const App = () => {
   return (
     <div className="App">
       <div className='sidebar'>
-        {sidebar && <Sidebar setSideHandler={setSidebarHandler} />}
+        {sidebar && <Sidebar  setbalanceValue={balance} sigin={linkSetup} setSideHandler={setSidebarHandler}/>}
         <div className='inner-section'>
           <div className='header-title'>
             {!sidebar&&<div className='hamburger-div'>
@@ -96,22 +98,24 @@ const App = () => {
           <div className='sub-content'>
             <Routes>
               {getRoutes().map((item, key) => (
-                <Route
+                // item.skip ? (
+                //   < Route
+                //     path={item.path}
+                //     key={key}
+                //     element={<item.element />}
+                //   >
+                //   </Route>
+                // ) : (
+                < Route
                   path={item.path}
                   key={key}
-                  element={<item.element client={client}
+                  element={(wallet === 'undefined') ? <div>Connect wallet</div> : <item.element client={client}
                     link={link}
                     wallet={wallet} />}
                 >
-                  {/* {item.children &&
-                    item.children.map((subItem, key) =>
-                      subItem.index ? (
-                        <Route key={key} index element={<subItem.element />} />
-                      ) : (
-                        <Route key={key} path={subItem.path} element={<subItem.element />} />
-                      )
-                    )} */}
                 </Route>
+                // )
+
               ))}
             </Routes>
           </div>
