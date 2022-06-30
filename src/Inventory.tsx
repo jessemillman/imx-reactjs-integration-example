@@ -1,6 +1,7 @@
 import { ethers } from 'ethers';
 import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType } from '@imtbl/imx-sdk';
 import { useEffect, useState } from 'react';
+import './Inventory.css';
 require('dotenv').config();
 interface InventoryProps {
   client: ImmutableXClient,
@@ -157,78 +158,88 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
   };
 
   return (
-    <div>
-      <div>
-        Mint NFT:
-        <br />
-        <label>
-          Token ID:
-          <input type="text" value={mintTokenId} onChange={e => setMintTokenId(e.target.value)} />
-        </label>
-        <label>
-          Blueprint:
-          <input type="text" value={mintBlueprint} onChange={e => setMintBlueprint(e.target.value)} />
-        </label>
-        <button onClick={mint}>Mint</button>
-      </div>
-      <div>
-        MintV2 - with Royalties NFT:
-        <br />
-        <label>
-          Token ID:
-          <input type="text" value={mintTokenIdv2} onChange={e => setMintTokenIdv2(e.target.value)} />
-        </label>
-        <label>
-          Blueprint:
-          <input type="text" value={mintBlueprintv2} onChange={e => setMintBlueprintv2(e.target.value)} />
-        </label>
-        <button onClick={mintv2}>MintV2</button>
-      </div>
-      <br />
-      <div>
-        Sell asset (create sell order):
-        <br />
-        <label>
-          Amount (ETH):
-          <input type="text" value={sellAmount} onChange={e => setSellAmount(e.target.value)} />
-        </label>
-        <label>
-          Token ID:
-          <input type="text" value={sellTokenId} onChange={e => setSellTokenId(e.target.value)} />
-        </label>
-        <label>
-          Token Address:
-          <input type="text" value={sellTokenAddress} onChange={e => setSellTokenAddress(e.target.value)} />
-        </label>
-        <button onClick={sellNFT}>Sell</button>
-      </div>
-      <br />
-      <div>
-        Cancel sell order:
-        <br />
-        <label>
-          Order ID:
-          <input type="text" value={sellCancelOrder} onChange={e => setSellCancelOrder(e.target.value)} />
-        </label>
-        <button onClick={cancelSell}>Cancel</button>
-      </div>
-      <br /><br /><br />
-      <div className='inventory-section'>{console.log(inventory.result)}
-        Inventory:
-<div className='inline-div'>
-        <div className='card-split'>
-          {inventory?.result?.map((val, i) => {
-            return <div key={i} className='cards'>
-              <img src={val?.image_url ?? ""} alt="profile" />
-              <p>{val?.name}</p>
-              <div>
-                <span className='text-spn'>{val?.description}</span>
-              </div>
-            </div>
-          })}
+    <div className='mint-div'>
+      <div className='inline-mint'>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>Mint NFT</h4>
+        </div>
+        <div className='inline-controls '>
+          <label>
+            Token ID:
+            <input type="text" className='input-field' value={mintTokenId} onChange={e => setMintTokenId(e.target.value)} />
+          </label>
+          <label>
+            Blueprint:
+            <input type="text" className='input-field' value={mintBlueprint} onChange={e => setMintBlueprint(e.target.value)} />
+          </label>
 
+          <button className='invent-btns' onClick={mint}>Mint</button>
         </div>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}> MintV2 - with Royalties NFT</h4>
         </div>
+        <div className='inline-controls '>
+          <label>
+            Token ID:
+            <input type="text" className='input-field' value={mintTokenIdv2} onChange={e => setMintTokenIdv2(e.target.value)} />
+          </label>
+          <label>
+            Blueprint:
+            <input type="text" className='input-field' value={mintBlueprintv2} onChange={e => setMintBlueprintv2(e.target.value)} />
+          </label>
+          <button className='invent-btns' onClick={mintv2}>MintV2</button>
+        </div>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>  Sell asset (create sell order)</h4>
+        </div>
+        <div className='inline-controls asset '>
+
+          <label>
+            Amount (ETH):
+            <input type="text" className='input-field' value={sellAmount} onChange={e => setSellAmount(e.target.value)} />
+          </label>
+          <label>
+            Token ID:
+            <input type="text" className='input-field' value={sellTokenId} onChange={e => setSellTokenId(e.target.value)} />
+          </label>
+          <label>
+            Token Address:
+            <input type="text" className='input-field' value={sellTokenAddress} onChange={e => setSellTokenAddress(e.target.value)} />
+          </label>
+          <button className='invent-btns' onClick={sellNFT}>Sell</button>
+        </div>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>   Cancel sell order:</h4>
+        </div>
+        <div className='inline-controls order'>
+          <label>
+            Order ID:
+            <input type="text" className='input-field' value={sellCancelOrder} onChange={e => setSellCancelOrder(e.target.value)} />
+          </label>
+          <button className='invent-btns' onClick={cancelSell}>Cancel</button>
+        </div>
+      </div>
+      <br />
+      <div className='inline-mint'>
+      <div className='inventory-section'>
+      <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>Inventory:</h4>
+        </div>
+        <div className='inline-div'>
+          <div className='card-split'>
+            {inventory?.result?.map((val, i) => {
+              return <div key={i} className='cards'>
+                <img src={val?.image_url ?? ""} alt="profile" />
+                <p>{val?.name}</p>
+                <div>
+                  <span className='text-spn'>{val?.description}</span>
+                </div>
+              </div>
+            })}
+
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );
