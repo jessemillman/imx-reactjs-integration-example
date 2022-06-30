@@ -1,6 +1,7 @@
 import testimge from './assets/images/3.jpg';
 import avatar from './assets/images/avatar.png';
 import './Listings.css'
+
 const Listings = () => {
     return (
         <>
