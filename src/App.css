@@ -21,8 +21,8 @@
 
 .sidebar {
   min-width: 20em;
-  display: grid;
-  grid-template-columns: 0fr 1fr;
+  display: flex;
+  /* grid-template-columns: 0fr 1fr; */
 }
 
 .header-title h1 {
@@ -62,7 +62,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
-  grid-template-columns: 0fr 1fr;
+  grid-template-columns: 0fr 1fr 3fr;
   height: 15em;
 }
 
@@ -94,5 +94,21 @@
   /* width: 100%;
   height: 100%; */
   padding: 2.7em;
+}
+
+.hamburger-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-left: 1em;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.inner-section{
+  width:100%;
 }
 

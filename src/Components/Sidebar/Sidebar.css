@@ -1,21 +1,23 @@
 .logo {
     padding-left: 1em;
-    padding-top: 2em;
+    padding-top: 0em;
     padding-bottom: 4em;
 }
 
-li a {
+li span {
     text-decoration: none;
     color: white;
 }
 
 .balance-div {
-    width: 10em;
+    width: 11em;
     height: 8em;
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
     border-radius: 12px;
-    margin-left: 2.5em;
-    margin-top: 10em;
+    margin-left: 1.5em;
+    margin-top: 9em;
+    margin-right: 1em;
+    padding:0px 10px;
 }
 
 .balance-div h5 {
@@ -23,21 +25,81 @@ li a {
     padding-top: 15px;
     font-size: 12px;
     color: #e9e0e0;
+    margin-bottom: 0px;
 }
 
 .inline-text {
-    font-size: 19px;
+    font-size: 22px;
     color: white;
 }
 
 .bal-btn {
     padding: 8px;
     display: flex;
-    margin-left: 19px;
+    width: 100%;
+    justify-content: space-between;
     border-radius: 8px;
     border: 1px solid white;
+    align-items: center;
 }
 
 .main-sidebar {
     padding: 15px;
+    transition: 0.1ms;
+}
+
+.sidebar-options{
+    list-style-type: none;
+}
+
+.sidebar-options i{
+    margin-right: 1em;
+    color:#fff;
+}
+
+.bal-btn-text{
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.bal-btn .fa-plus-circle{
+    color:blue
+}
+
+.eth-div{
+    text-align:center;
+    color:#fff;
+    font-size: 11px;
+    margin: 6px 0px;
+}
+
+.eth-div .fa-ethereum{
+    color:rgb(0, 0, 0);
+}
+
+.eth-icon{
+    background: #fff;
+    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.main-sidebar .hamburger-div{
+    justify-content: end;
+}
+
+.main-sidebar .hamburger-div svg{
+   margin-left:auto;
+} 
+.sidebar-options li{
+    margin: 11px 0px;
+    padding: 6px 0px;
+}
+
+.sidebar-options .active-tab i,.sidebar-options .active-tab span{
+    color:#989898;
+}
+.pointer{
+    cursor: pointer;
 }

@@ -11,6 +11,8 @@ import avatar from './assets/images/avatar.png';
 import getRoutes from './Router';
 require('dotenv').config();
 
+
+
 const App = () => {
   // initialise Immutable X Link SDK
   const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
@@ -20,7 +22,7 @@ const App = () => {
   const [wallet, setWallet] = useState('undefined');
   const [balance, setBalance] = useState<ImmutableMethodResults.ImmutableGetBalanceResult>(Object);
   const [client, setClient] = useState<ImmutableXClient>(Object);
-
+  const [sidebar, setSidebar] = useState(true)
 
   useEffect(() => {
     buildIMX()
@@ -66,13 +68,19 @@ const App = () => {
     return null
   }
 
+  const setSidebarHandler = (value: boolean) => {
+    return setSidebar(value)
+  };
+
   return (
     <div className="App">
-
       <div className='sidebar'>
-        <Sidebar />
-        <div >
+        {sidebar && <Sidebar setSideHandler={setSidebarHandler} />}
+        <div className='inner-section'>
           <div className='header-title'>
+            {!sidebar&&<div className='hamburger-div'>
+              <svg aria-hidden="true" className='pointer' onClick={() => setSidebarHandler(true)} role="img" width="3em" height="3em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" /></svg>
+            </div>}
             <div>
               <h1>Powering the next generation of web3 games
               </h1>
@@ -80,16 +88,11 @@ const App = () => {
                 <button className='button1' type="button">Start Building</button>
                 <button className='button2' type="button">Contact Us</button>
               </div>
-
             </div>
-
-
             <div className='logoframe'>
               <iframe src={'https://player.vimeo.com/video/720459459?h=8ce82285ae&autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&background=1:'}></iframe>
             </div>
-
           </div>
-
           <div className='sub-content'>
             <Routes>
               {getRoutes().map((item, key) => (
@@ -111,16 +114,8 @@ const App = () => {
                 </Route>
               ))}
             </Routes>
-       
           </div>
-
         </div>
-
-
-
-
-
-
       </div>
 
 
