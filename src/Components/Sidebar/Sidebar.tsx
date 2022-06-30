@@ -2,10 +2,11 @@ import { Link } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
 import './Sidebar.css';
 interface Props {
+    setbalanceValue: any,
     sigin: () => any;
 }
 
-const Sidebar = ({ sigin }: Props) => {
+const Sidebar = ({ setbalanceValue,sigin }: Props) => {
 
     const sidebarConfig = [
         {
@@ -64,7 +65,7 @@ const Sidebar = ({ sigin }: Props) => {
             }
 
             <div className="balance-div">
-                <h5>Your Balance <br></br> <span className="inline-text">{'1,024.31'}</span></h5>
+                <h5>Your Balance <br></br> <span className="inline-text">{setbalanceValue?.balance?.toString()}</span></h5>
 
                 <button className="bal-btn" type="button">Top Up Balance</button>
 

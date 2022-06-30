@@ -1,7 +1,8 @@
 import './App.css';
 import { Link, ImmutableXClient, ImmutableMethodResults } from '@imtbl/imx-sdk';
+// import { Link,  } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { useNavigate ,Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
 import Inventory from './Inventory';
 import Bridging from './Bridging';
@@ -10,8 +11,9 @@ import getRoutes from './Router';
 require('dotenv').config();
 
 const App = () => {
+  let navigate = useNavigate();
   // initialise Immutable X Link SDK
-  const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
+const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
 
   // general
   const [tab, setTab] = useState('marketplace');
@@ -36,6 +38,7 @@ const App = () => {
     const res = await link.setup({})
     setWallet(res.address)
     setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
+    navigate('/listing')
   };
 
   function handleTabs() {
@@ -69,7 +72,7 @@ const App = () => {
     <div className="App">
 
       <div className='sidebar'>
-        <Sidebar sigin={linkSetup} />
+        <Sidebar setbalanceValue={balance} sigin={linkSetup} />
         <div >
           <div className='header-title'>
             <div>
