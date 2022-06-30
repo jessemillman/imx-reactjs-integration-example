@@ -1,0 +1,56 @@
+.mint-div {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 1em;
+    padding: 20px;
+}
+
+.header-mint {
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr 0.2fr;
+    grid-column-gap: 12px;
+    align-items: center;
+}
+
+.inline-mint {
+    border: 1px solid rgb(212, 200, 200);
+    padding: 20px;
+    /* text-align: center; */
+    margin-left: 20px;
+    border-radius: 2em;
+}
+
+.inline-controls {
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr 0.2fr;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.asset {
+    grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr;
+}
+
+.order {
+    grid-template-columns: 0.2fr 0.2fr;
+}
+
+.invent-btns {
+    height: 35px;
+    border-radius: 2em;
+    font-weight: bold;
+    width: 10em;
+    padding: 8px;
+    background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
+    cursor: pointer;
+    border: none;
+    margin-top: 1.7em;
+}
+
+.input-field {
+    height: 24px;
+    border-radius: 0.4em;
+    border: 1px solid #393636e3;
+    margin-top: 10px;
+
+}
