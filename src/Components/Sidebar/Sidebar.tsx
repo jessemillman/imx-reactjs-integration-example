@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
 import './Sidebar.css';
+interface Props {
+    sigin: () => any;
+}
 
-const Sidebar = () => {
+const Sidebar = ({ sigin }: Props) => {
 
     const sidebarConfig = [
         {
@@ -32,12 +35,23 @@ const Sidebar = () => {
         }
 
     ]
+
+
+
     return (
         <div className="main-sidebar">
 
             <div className="logo">
                 <img src={immuLogo} alt="immutableX" />
+                <div className="sigin-btn">
+                    <button className="connect-btn" onClick={sigin} type="button">Connect Wallet</button>
+                </div>
+
+
             </div>
+
+
+
             {
                 sidebarConfig.map((menu, ind) => {
                     return (

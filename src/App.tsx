@@ -1,13 +1,11 @@
 import './App.css';
 import { Link, ImmutableXClient, ImmutableMethodResults } from '@imtbl/imx-sdk';
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
 import Inventory from './Inventory';
 import Bridging from './Bridging';
 import Sidebar from './Components/Sidebar/Sidebar';
-import testimge from './assets/images/3.jpg';
-import avatar from './assets/images/avatar.png';
 import getRoutes from './Router';
 require('dotenv').config();
 
@@ -34,6 +32,7 @@ const App = () => {
 
   // register and/or setup a user
   async function linkSetup(): Promise<void> {
+    // console.log('APP COMPONENT')
     const res = await link.setup({})
     setWallet(res.address)
     setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
@@ -70,7 +69,7 @@ const App = () => {
     <div className="App">
 
       <div className='sidebar'>
-        <Sidebar />
+        <Sidebar sigin={linkSetup} />
         <div >
           <div className='header-title'>
             <div>
@@ -93,25 +92,27 @@ const App = () => {
           <div className='sub-content'>
             <Routes>
               {getRoutes().map((item, key) => (
-                <Route
+                // item.skip ? (
+                //   < Route
+                //     path={item.path}
+                //     key={key}
+                //     element={<item.element />}
+                //   >
+                //   </Route>
+                // ) : (
+                < Route
                   path={item.path}
                   key={key}
-                  element={<item.element client={client}
+                  element={(wallet === 'undefined') ? <div>Connect wallet</div> : <item.element client={client}
                     link={link}
                     wallet={wallet} />}
                 >
-                  {/* {item.children &&
-                    item.children.map((subItem, key) =>
-                      subItem.index ? (
-                        <Route key={key} index element={<subItem.element />} />
-                      ) : (
-                        <Route key={key} path={subItem.path} element={<subItem.element />} />
-                      )
-                    )} */}
                 </Route>
+                // )
+
               ))}
             </Routes>
-       
+
           </div>
 
         </div>
