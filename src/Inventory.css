@@ -54,3 +54,12 @@
     margin-top: 10px;
 
 }
+
+.deposit-btn {
+    width: 15em
+}
+
+
+.complete-btn {
+    margin-top: unset;
+}

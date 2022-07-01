@@ -1,6 +1,7 @@
 
-import { Link, ImmutableXClient, ImmutableMethodResults, ERC721TokenType, ETHTokenType, ImmutableRollupStatus  } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, ImmutableMethodResults, ERC721TokenType, ETHTokenType, ImmutableRollupStatus } from '@imtbl/imx-sdk';
 import { useEffect, useState } from 'react';
+import './Inventory.css';
 require('dotenv').config();
 
 interface BridgingProps {
@@ -9,7 +10,7 @@ interface BridgingProps {
   wallet: string
 }
 
-const Bridging = ({client, link, wallet}: BridgingProps) => {
+const Bridging = ({ client, link, wallet }: BridgingProps) => {
   // withdrawals
   const [preparingWithdrawals, setPreparingWithdrawals] = useState<ImmutableMethodResults.ImmutableGetWithdrawalsResult>(Object);
   const [readyWithdrawals, setReadyWithdrawals] = useState<ImmutableMethodResults.ImmutableGetWithdrawalsResult>(Object);
@@ -96,97 +97,124 @@ const Bridging = ({client, link, wallet}: BridgingProps) => {
   };
 
   return (
-    <div>
-      <div>
-        ETH:
-        <br/><br/>
-        <div>
-          Deposit ETH:
-          <br/>
+    <div className='mint-div'>
+      <div className='inline-mint'>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>EFT</h4>
+        </div>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}> Deposit ETH:</h4>
+        </div>
+        <div className='inline-controls order '>
+
           <label>
             Amount (ETH):
-            <input type="text" value={depositAmount} onChange={e => setDepositAmount(e.target.value)} />
+            <input type="text" className='input-field' value={depositAmount} onChange={e => setDepositAmount(e.target.value)} />
           </label>
-          <button onClick={depositETH}>Deposit ETH</button>
+          <button className='invent-btns' onClick={depositETH}>Deposit ETH</button>
         </div>
-        <br/><br/>
-        <div>
-          Prepare ETH for withdrawal (submit to be rolled up and confirmed on chain in the next batch):
-          <br/>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>Prepare ETH for withdrawal (submit to be rolled up and confirmed on chain in the next batch):</h4>
+        </div>
+
+        <div className='inline-controls order'>
           <label>
             Amount (ETH):
-            <input type="text" value={prepareAmount} onChange={e => setPrepareAmount(e.target.value)} />
+            <input type="text" className='input-field' value={prepareAmount} onChange={e => setPrepareAmount(e.target.value)} />
           </label>
-          <button onClick={prepareWithdrawalETH}>Prepare ETH Withdrawal</button>
+          <button className='invent-btns deposit-btn' onClick={prepareWithdrawalETH}>Prepare ETH Withdrawal</button>
         </div>
-        <br/><br/>
-        <div>
-          Complete ETH withdrawal (withdraws entire eth balance that is ready for withdrawal to L1 wallet):
-          <br/>
-          <button onClick={completeWithdrawalETH}>Complete ETH Withdrawal</button>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}> Complete ETH withdrawal (withdraws entire eth balance that is ready for withdrawal to L1 wallet):</h4>
+        </div>
+
+
+        <div className="inline-controls">
+          <button className='invent-btns deposit-btn complete-btn' onClick={completeWithdrawalETH}>Complete ETH Withdrawal</button>
+        </div>
+
+        {/* <div> */}
+
+          <div className='theader-mint'>
+            <h4 style={{ 'marginLeft': '21px' }}> ERC721:</h4>
+          </div>
+          <div className='theader-mint'>
+            <h4 style={{ 'marginLeft': '21px' }}> Deposit NFT:</h4>
+          </div>
+
+
+          <div className='inline-controls '>
+          <label>
+          Token ID:
+            <input type="text" className='input-field' value={depositTokenId} onChange={e => setDepositTokenId(e.target.value)} />
+          </label>
+          <label>
+          Token Address:
+            <input type="text" className='input-field' value={depositTokenAddress} onChange={e => setDepositTokenAddress(e.target.value)}  />
+          </label>
+
+          <button className='invent-btns'onClick={depositNFT}>Deposit NFT</button>
+        </div>
+
+
+        
+
+
+          <div className='theader-mint'>
+            <h4 style={{ 'marginLeft': '21px' }}>  Prepare NFT for withdrawal (submit to be rolled up and confirmed on chain in the next batch):</h4>
+          </div>
+
+          <div className='inline-controls'>
+            <label>
+              Token ID:
+              <input type="text" className='input-field' value={prepareTokenId} onChange={e => setPrepareTokenId(e.target.value)} />
+            </label>
+            <label>
+              Token Address:
+              <input type="text" className='input-field' value={prepareTokenAddress} onChange={e => setPrepareTokenAddress(e.target.value)} />
+            </label>
+            <button className='invent-btns deposit-btn' onClick={prepareWithdrawalNFT}>Prepare NFT Withdrawal</button>
+          </div>
+
+          <div className='theader-mint'>
+            <h4 style={{ 'marginLeft': '21px' }}> Complete NFT withdrawal (withdraws single NFT that is ready for withdrawal to L1 wallet):</h4>
+          </div>
+
+          <div className='inline-controls'>
+
+            <label>
+              Token ID:
+              <input type="text" className='input-field' value={completeTokenId} onChange={e => setCompleteTokenId(e.target.value)} />
+            </label>
+            <label>
+              Token Address:
+              <input type="text" className='input-field' value={completeTokenAddress} onChange={e => setCompleteTokenAddress(e.target.value)} />
+            </label>
+            <button className='invent-btns deposit-btn' onClick={completeWithdrawalNFT}>Complete NFT Withdrawal</button>
+          </div>
+        {/* </div> */}
+
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}> Withdrawals being prepared:</h4>
+
+          {/* {JSON.stringify(preparingWithdrawals)} */}
+        </div>
+        <div className='theader-mint'>
+          <h4 style={{ 'marginLeft': '21px' }}>Ready for withdrawal:</h4>
+
+          {/* {JSON.stringify(readyWithdrawals)} */}
+        </div>
+       
+        <div className='theader-mint'>
+        <h4 style={{ 'marginLeft': '21px' }}>  Withdrawn to wallet:</h4>
+        
+          {/* {JSON.stringify(completedWithdrawals)} */}
         </div>
       </div>
-      <br/>
-      <div>
-        ERC721:
-        <br/><br/>
-        <div>
-          Deposit NFT:
-          <br/>
-          <label>
-            Token ID:
-            <input type="text" value={depositTokenId} onChange={e => setDepositTokenId(e.target.value)} />
-          </label>
-          <label>
-            Token Address:
-            <input type="text" value={depositTokenAddress} onChange={e => setDepositTokenAddress(e.target.value)} />
-          </label>
-          <button onClick={depositNFT}>Deposit NFT</button>
-        </div>
-        <br/><br/>
-        <div>
-          Prepare NFT for withdrawal (submit to be rolled up and confirmed on chain in the next batch):
-          <br/>
-          <label>
-            Token ID:
-            <input type="text" value={prepareTokenId} onChange={e => setPrepareTokenId(e.target.value)} />
-          </label>
-          <label>
-            Token Address:
-            <input type="text" value={prepareTokenAddress} onChange={e => setPrepareTokenAddress(e.target.value)} />
-          </label>
-          <button onClick={prepareWithdrawalNFT}>Prepare NFT Withdrawal</button>
-        </div>
-        <br/><br/>
-        <div>
-          Complete NFT withdrawal (withdraws single NFT that is ready for withdrawal to L1 wallet):
-          <br/>
-          <label>
-            Token ID:
-            <input type="text" value={completeTokenId} onChange={e => setCompleteTokenId(e.target.value)} />
-          </label>
-          <label>
-            Token Address:
-            <input type="text" value={completeTokenAddress} onChange={e => setCompleteTokenAddress(e.target.value)} />
-          </label>
-          <button onClick={completeWithdrawalNFT}>Complete NFT Withdrawal</button>
-        </div>
-      </div>
-      <br/><br/><br/>
-      <div>
-        Withdrawals being prepared:
-        {JSON.stringify(preparingWithdrawals)}
-      </div>
-      <br/><br/>
-      <div>
-        Ready for withdrawal:
-        {JSON.stringify(readyWithdrawals)}
-      </div>
-      <br/><br/>
-      <div>
-        Withdrawn to wallet:
-        {JSON.stringify(completedWithdrawals)}
-      </div>
+
+
+
+
     </div>
   );
 }
