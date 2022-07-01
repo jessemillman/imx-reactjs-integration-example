@@ -1,6 +1,7 @@
-import {  useState, useEffect } from "react";
+import {  useState, useEffect,useRef } from "react";
 import { useNavigate,useLocation } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
+import useOnclickOutside from "react-cool-onclickoutside";
 import './Sidebar.css';
 interface Props {
     setbalanceValue: any,
@@ -18,6 +19,12 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler }: Props) => 
     useEffect(()=>{
         setSidebarTab(location?.pathname?.split("/")[1])
     },[location?.pathname])
+
+
+    const dropDownuterClick = useOnclickOutside(() => {
+        setAddressDropdown(false);
+      });
+
 
     const sidebarConfig = [
         {
@@ -64,7 +71,7 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler }: Props) => 
             </div>
             <div className="logo">
                 <img src={immuLogo} alt="immutableX" />
-                <div className="sigin-btn">
+                <div className="sigin-btn" ref={dropDownuterClick}>
                     <button className={(address&&address!=="undefined") ? "connect-btn address-text" : "connect-btn"} onClick={(address&&address!=="undefined") ? () => setAddressDropdown(!addressDropdown) : sigin} type="button">
                         {(address&&address!=="undefined") ? <>{address?.slice(0, 6)}...{address?.slice(-4)}<i className="fa fa-angle-down"></i></>
                             : `Connect Wallet`}

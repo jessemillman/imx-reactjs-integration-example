@@ -124,6 +124,7 @@ li span {
 .sigin-btn{
     margin-top: 44px;
     margin-left: 4px;
+    display: inline-block;
     position: relative;
 }
 
