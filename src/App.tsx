@@ -24,6 +24,7 @@ const App = () => {
   const [sidebar, setSidebar] = useState(true)
 
   useEffect(() => {
+    // navigate('/listing')
     buildIMX()
   }, [])
 
@@ -39,7 +40,7 @@ const App = () => {
     const res = await link.setup({})
     setWallet(res.address)
     setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
-    navigate('/listing')
+
   };
 
   function handleTabs() {
@@ -96,32 +97,34 @@ const App = () => {
           </div>
           <div className='sub-content'>
 
-            {wallet == 'undefined' ? <div>Connect wallet</div> : (
-              <Routes>
-                {getRoutes().map((item, key) => (
-                  // item.skip ? (
-                  //   < Route
-                  //     path={item.path}
-                  //     key={key}
-                  //     element={<item.element />}
-                  //   >
-                  //   </Route>
-                  // ) : (
-                  < Route
-                    path={item.path}
-                    key={key}
-                    element={(wallet === 'undefined') ? <div>Connect wallet</div> : <item.element client={client}
-                      link={link}
-                      wallet={wallet} />}
-                  >
-                  </Route>
-                  // )
+
+            <Routes>
+              {getRoutes().map((item, key) => (
+
+                // item.path=='/marketplace' ? (
+                //   < Route
+                //     path={item.path}
+                //     key={key}
+                //     element={<item.element  client={client}
+                //     link={link} />}
+                //   >
+                //   </Route>
+                // ) : (
+                < Route
+                  path={item.path}
+                  key={key}
+                  element={(wallet === 'undefined' && !item.skip) ? <div>Connect wallet</div> : <item.element client={client}
+                    link={link}
+                    wallet={wallet} />}
+                >
+                </Route>
+                // )
 
                 ))}
-              </Routes>
-            )
+            </Routes>
+          
 
-            }
+  
             {/* {wallet === 'undefined' 
             return(
             <div>Connect wallet</div>
