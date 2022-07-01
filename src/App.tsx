@@ -7,6 +7,7 @@ import Inventory from './Inventory';
 import Bridging from './Bridging';
 import Sidebar from './Components/Sidebar/Sidebar';
 import getRoutes from './Router';
+import ConnectWalletSection from './Components/ConnectWalletSection/ConnectWalletSection';
 require('dotenv').config();
 
 
@@ -113,7 +114,7 @@ const App = () => {
                 < Route
                   path={item.path}
                   key={key}
-                  element={(wallet === 'undefined' && !item.skip) ? <div>Connect wallet</div> : <item.element client={client}
+                  element={(wallet === 'undefined' && !item.skip) ? <ConnectWalletSection/> : <item.element client={client}
                     link={link}
                     wallet={wallet} />}
                 >

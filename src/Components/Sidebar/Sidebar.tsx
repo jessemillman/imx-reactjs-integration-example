@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import {  useState, useEffect } from "react";
+import { useNavigate,useLocation } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
 import './Sidebar.css';
 interface Props {
@@ -10,9 +10,15 @@ interface Props {
 }
 
 const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler }: Props) => {
-    const [sidebarTab, setSidebarTab] = useState("Listing");
+    const [sidebarTab, setSidebarTab] = useState("listing");
     const [addressDropdown, setAddressDropdown] = useState(false);
     let navigate = useNavigate()
+    const location = useLocation();
+
+    useEffect(()=>{
+        setSidebarTab(location?.pathname?.split("/")[1])
+    },[location?.pathname])
+
     const sidebarConfig = [
         {
             LabelName: 'Listing',
@@ -74,10 +80,7 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler }: Props) => 
                 {
                     sidebarConfig.map((menu, ind) => {
                         return (
-                            <li key={ind} className={`${sidebarTab === menu.LabelName ? "active-tab" : "tab"} pointer`} onClick={() => {
-                                setSidebarTab(menu.LabelName)
-                                navigate(menu.Link)
-                            }}><i className={menu.icon} aria-hidden="true"></i><span>{menu.LabelName}</span>
+                            <li key={ind} className={`${menu.Link.includes(sidebarTab) ? "active-tab" : "tab"} pointer`} onClick={() => navigate(menu.Link)}><i className={menu.icon} aria-hidden="true"></i><span>{menu.LabelName}</span>
                             </li>
                         )
                     })

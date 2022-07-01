@@ -46,3 +46,11 @@
   .active-btn{
     background: #bcb0d8;
   }
+
+  .connect-wallet-section{
+    height: 50vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

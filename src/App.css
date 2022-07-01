@@ -95,7 +95,7 @@
   /* width: 100%;
   height: 100%; */
   padding: 2.7em;
-  max-height: 56vh;
+  height: 56vh;
   overflow-y: scroll;
 }
 
