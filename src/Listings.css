@@ -42,3 +42,7 @@
     display: grid;
     grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr
   }
+
+  .active-btn{
+    background: #bcb0d8;
+  }
