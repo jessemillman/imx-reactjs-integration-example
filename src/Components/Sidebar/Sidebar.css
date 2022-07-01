@@ -50,7 +50,7 @@ li span {
 
 .main-sidebar {
     padding: 15px;
-    transition: 0.1ms;
+   min-width: 236px;
 }
 
 .sidebar-options{
@@ -111,8 +111,8 @@ li span {
 
 .connect-btn {
     height: 35px;
-    border-radius: 2em;
     font-weight: bold;
+    border-radius: 2em;
     width: 10em;
     padding: 8px;
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
@@ -122,4 +122,39 @@ li span {
 .sigin-btn{
     margin-top: 25px;
     margin-left: 4px;
+    position: relative;
+}
+
+.address-text{
+    position: relative;
+}
+
+.address-text::before{
+    background: rgb(5 189 7);
+    padding: 4px;
+    position: absolute;
+    border-radius: 10px;
+    top: 11px;
+    left: 9px;
+    content: "";
+}
+
+.address-text .fa-angle-down{
+    position: absolute;
+    right: 9px;
+    top: 10px;
+}
+
+.addressDropdown{
+    position: absolute;
+    background: #3b4560;
+    width: 134px;
+}
+
+.disconnect-wallet{
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(208 53 71);
+    text-align: center;
+    padding: 9px 0px;
 }

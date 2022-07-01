@@ -76,7 +76,7 @@ const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
   return (
     <div className="App">
       <div className='sidebar'>
-        {sidebar && <Sidebar  setbalanceValue={balance} sigin={linkSetup} setSideHandler={setSidebarHandler}/>}
+        {sidebar && <Sidebar  setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler}/>}
         <div className='inner-section'>
           <div className='header-title'>
             {!sidebar&&<div className='hamburger-div'>
