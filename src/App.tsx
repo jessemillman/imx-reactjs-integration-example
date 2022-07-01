@@ -1,7 +1,7 @@
 import './App.css';
 import { Link, ImmutableXClient, ImmutableMethodResults } from '@imtbl/imx-sdk';
 import { useEffect, useState } from 'react';
-import { useNavigate ,Route, Routes } from 'react-router-dom';
+import { useNavigate, Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
 import Inventory from './Inventory';
 import Bridging from './Bridging';
@@ -14,7 +14,7 @@ require('dotenv').config();
 const App = () => {
   let navigate = useNavigate();
   // initialise Immutable X Link SDK
-const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
+  const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
 
   // general
   const [tab, setTab] = useState('marketplace');
@@ -24,6 +24,7 @@ const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
   const [sidebar, setSidebar] = useState(true)
 
   useEffect(() => {
+    // navigate('/listing')
     buildIMX()
   }, [])
 
@@ -39,7 +40,7 @@ const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
     const res = await link.setup({})
     setWallet(res.address)
     setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
-    navigate('/listing')
+
   };
 
   function handleTabs() {
@@ -79,7 +80,7 @@ const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
         {sidebar && <Sidebar  setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler}/>}
         <div className='inner-section'>
           <div className='header-title'>
-            {!sidebar&&<div className='hamburger-div'>
+            {!sidebar && <div className='hamburger-div'>
               <svg aria-hidden="true" className='pointer' onClick={() => setSidebarHandler(true)} role="img" width="3em" height="3em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" /></svg>
             </div>}
             <div>
@@ -95,28 +96,42 @@ const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
             </div>
           </div>
           <div className='sub-content'>
+
+
             <Routes>
               {getRoutes().map((item, key) => (
-                // item.skip ? (
+
+                // item.path=='/marketplace' ? (
                 //   < Route
                 //     path={item.path}
                 //     key={key}
-                //     element={<item.element />}
+                //     element={<item.element  client={client}
+                //     link={link} />}
                 //   >
                 //   </Route>
                 // ) : (
                 < Route
                   path={item.path}
                   key={key}
-                  element={(wallet === 'undefined') ? <div>Connect wallet</div> : <item.element client={client}
+                  element={(wallet === 'undefined' && !item.skip) ? <div>Connect wallet</div> : <item.element client={client}
                     link={link}
                     wallet={wallet} />}
                 >
                 </Route>
                 // )
 
-              ))}
+                ))}
             </Routes>
+          
+
+  
+            {/* {wallet === 'undefined' 
+            return(
+            <div>Connect wallet</div>
+            )
+              
+            } */}
+
           </div>
         </div>
       </div>
