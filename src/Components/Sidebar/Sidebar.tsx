@@ -75,7 +75,7 @@ const Sidebar = ({ setbalanceValue,sigin,setSideHandler }: Props) => {
                 }
             </ul>
             <div className="balance-div">
-                <h5>Your Balance <br></br> <span className="inline-text">{setbalanceValue?.balance?.toString()}</span></h5>
+                <h5>Your Balance <br></br> <div className="inline-text">{setbalanceValue?.balance?.toString()}</div></h5>
                 <div className="eth-div"><span className="eth-icon"><i className='fab fa-ethereum'></i></span>ETH</div>
                 <button className="bal-btn" type="button">
                     <i className="fa fa-plus-circle"></i>
