@@ -18,8 +18,13 @@ const Router = () => {
         },
         {
             skip: false,
-            path: '/marketplace',
-            element: Marketplace,
+            path: '/deposit',
+            element: Bridging,
+        },
+        {
+            skip: false,
+            path: '/withdrawal',
+            element: Bridging,
         }, {
             skip: true,
             path: '*',
