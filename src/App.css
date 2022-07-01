@@ -26,31 +26,30 @@
 }
 
 .header-title h1 {
-
-
   color: white;
   font-weight: 500;
-  width: 9em;
-  padding: 1em;
+  width: 8em;
+  padding: 0px 1em;
   padding-bottom: unset;
+  font-size: 38px;
 }
 
 .header-btn {
-  margin-left: 2em;
+  margin-left: 2.5em;
   position: relative;
   bottom: 12px;
 }
 
 .header-btn .button1 {
   border-radius: 2em;
-  padding: 0.6em;
+  padding: 11px 22px;
   background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
   font-weight: bold;
 }
 
 .header-btn .button2 {
   border-radius: 2em;
-  padding: 0.6em;
+  padding: 11px 18px;
   background: #000;
   border: 1px solid #ffff;
   color: #fff;
@@ -63,19 +62,19 @@
   background-size: cover;
   display: grid;
   grid-template-columns: 0fr 1fr 3fr;
-  height: 15em;
+  height: 16em;
 }
 
 
 
 .list-btn {
-  height: 24px;
   background-color: #6a61611a;
-  width: 14em;
+  width: 11em;
   border-radius: 2em;
   color: #7d52e0;
+  padding: 7px 12px;
   border: none;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   cursor: pointer;
 }
 
@@ -95,7 +94,7 @@
   /* width: 100%;
   height: 100%; */
   padding: 2.7em;
-  height: 56vh;
+  height: 54vh;
   overflow-y: scroll;
 }
 
@@ -114,4 +113,9 @@
 .inner-section{
   width:100%;
 }
+
+.header-text-div{
+  margin-left: 10px;
+}
+
 

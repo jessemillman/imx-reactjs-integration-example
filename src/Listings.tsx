@@ -24,9 +24,9 @@ const Listings = () => {
     <>
       <div className='inline-div'>
         <div className='top-header'>
-          <h4 style={{ 'marginLeft': '21px' }}> Listed Assets</h4>
-          <button className={`list-btn ${buttonname == 'Guild of Guardians' ? 'active-btn' : ''}`}  value={buttonname} type="button" onClick={(e) => buttonClick(e)}>Guild of Guardians</button>
-          <button className={`list-btn ${buttonname == 'Gods Unchained' ? 'active-btn' : ''}`} value={buttonname} onClick={(e) => buttonClick(e)} type="button">Gods Unchained</button>
+          <h3 style={{ 'marginLeft': '21px' }}> Listed Assets</h3>
+          <button className={`list-btn ${buttonname == 'Guild of Guardians' ? '' : 'not-active-btn'}`}  value={buttonname} type="button" onClick={(e) => buttonClick(e)}>Guild of Guardians</button>
+          <button className={`list-btn ${buttonname == 'Gods Unchained' ? '' : 'not-active-btn'}`} value={buttonname} onClick={(e) => buttonClick(e)} type="button">Gods Unchained</button>
         </div>
 
         {/* {JSON.stringify(userdata)}; */}

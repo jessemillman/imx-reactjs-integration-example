@@ -15,7 +15,7 @@ li span {
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
     border-radius: 12px;
     margin-left: 1.5em;
-    margin-top: 8em;
+    margin-top: 2.5em;
     margin-right: 1em;
     padding:0px 10px;
 }
@@ -55,6 +55,8 @@ li span {
 
 .sidebar-options{
     list-style-type: none;
+    margin-top: 72px;
+    border-top: 1px solid #686565;
 }
 
 .sidebar-options i{
@@ -113,14 +115,14 @@ li span {
     height: 35px;
     font-weight: bold;
     border-radius: 2em;
-    width: 10em;
+    width: 12em;
     padding: 8px;
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
     cursor: pointer;
 }
 
 .sigin-btn{
-    margin-top: 25px;
+    margin-top: 44px;
     margin-left: 4px;
     position: relative;
 }
@@ -147,12 +149,14 @@ li span {
 
 .addressDropdown{
     position: absolute;
-    background: #3b4560;
-    width: 134px;
+    background: #333131;
+    width: 163px;
+    top: 41px;
+    border-radius: 6px;
 }
 
 .disconnect-wallet{
-    font-weight: bold;
+    font-weight: 500;
     font-size: 14px;
     color: rgb(208 53 71);
     text-align: center;

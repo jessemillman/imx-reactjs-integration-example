@@ -66,7 +66,7 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler }: Props) => 
                 <img src={immuLogo} alt="immutableX" />
                 <div className="sigin-btn">
                     <button className={(address&&address!=="undefined") ? "connect-btn address-text" : "connect-btn"} onClick={(address&&address!=="undefined") ? () => setAddressDropdown(!addressDropdown) : sigin} type="button">
-                        {(address&&address!=="undefined") ? <>{address?.slice(0, 5)}...{address?.slice(-4)}<i className="fa fa-angle-down"></i></>
+                        {(address&&address!=="undefined") ? <>{address?.slice(0, 6)}...{address?.slice(-4)}<i className="fa fa-angle-down"></i></>
                             : `Connect Wallet`}
                     </button>
                     {addressDropdown && <div className="addressDropdown">
