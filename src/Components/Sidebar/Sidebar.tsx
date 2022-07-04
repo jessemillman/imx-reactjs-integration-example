@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
 import useOnclickOutside from "react-cool-onclickoutside";
