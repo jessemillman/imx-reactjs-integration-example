@@ -38,7 +38,7 @@ const Listings = () => {
                 <div key={key} className='cards'>
                   <img src={user['sell']['data']['properties']['image_url']} />
                   <p>{user['sell']['data']['properties']['name']}</p>
-                  <div>
+                  <div className='sub-container'>
                     <img className='avatar-img' src={user['sell']['data']['properties']['collection']['icon_url']} />
                     <span className='text-spn'>@jessemillman.eth</span>
                   </div>

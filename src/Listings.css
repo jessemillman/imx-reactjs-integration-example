@@ -24,6 +24,7 @@
   
   .cards p {
     font-weight: bold;
+    margin-left: 28px;
   }
   
   .avatar-img {
@@ -57,4 +58,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .sub-container{
+    margin-left: 25px;
   }
