@@ -253,13 +253,21 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
           <div className='inline-div'>
             <div className='card-split'>
               {inventory?.result?.map((val: any, i: any) => {
-                return <div key={i} className='cards'>
-                  <img src={val?.image_url ?? ""} alt="profile" />
-                  <p>{val?.name}</p>
-                  <div>
-                    <span className='text-spn'>{val?.description}</span>
+                return val['image_url'] != null ? (
+                  <div key={i} className='cards'>
+                    <img src={val?.image_url ?? ""} alt="profile" />
+                    <p>{val?.name}</p>
+                    <div>
+                      <span className='text-spn'>{val?.description}</span>
+                    </div>
                   </div>
+                ) : <div className='not-image'>
+                      <div className='sub-img'>Image Not available</div>
                 </div>
+
+
+
+
               })}
 
             </div>

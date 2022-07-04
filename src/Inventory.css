@@ -63,3 +63,16 @@
 .complete-btn {
     margin-top: unset;
 }
+
+.not-image {
+    border: 1px solid rgb(212, 200, 200);
+    padding: 1em;
+    margin: 1em;
+    border-radius: 2em;
+    min-height: 19em;
+}
+
+.sub-img {
+    text-align: center;
+   margin-top: 8em;
+}
