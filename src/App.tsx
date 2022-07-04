@@ -52,6 +52,7 @@ const App = () => {
   };
   const disconnectWalletHandler=()=>{
     setWallet('undefined')
+    navigate('/listing')
   }
 
   function handleTabs() {
