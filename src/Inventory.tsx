@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType } from '@imtbl/imx-sdk';
+import { getConfig, AssetsApi, ListAssetsResponse } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
 import './Inventory.css';
 require('dotenv').config();
@@ -10,7 +11,7 @@ interface InventoryProps {
 }
 
 const Inventory = ({ client, link, wallet }: InventoryProps) => {
-  const [inventory, setInventory] = useState<ImmutableMethodResults.ImmutableGetAssetsResult>(Object);
+  const [inventory, setInventory] = useState<ListAssetsResponse>(Object);
   // minting
   const [mintTokenId, setMintTokenId] = useState('');
   const [mintBlueprint, setMintBlueprint] = useState('');
@@ -23,12 +24,20 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
   const [sellTokenAddress, setSellTokenAddress] = useState('');
   const [sellCancelOrder, setSellCancelOrder] = useState('');
 
+  const config = getConfig('ropsten');
+  const assetApi = new AssetsApi(config.api);
+
   useEffect(() => {
     load()
   }, [])
 
   async function load(): Promise<void> {
-    setInventory(await client.getAssets({ user: wallet, sell_orders: true }))
+    const assetResponse = await assetApi.listAssets({
+      user: wallet,
+      sellOrders: true
+    })
+    setInventory(assetResponse['data'])
+    // setInventory(await client.getAssets({ user: wallet, sell_orders: true }))
   };
 
   // sell an asset
@@ -38,7 +47,11 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
       tokenId: sellTokenId,
       tokenAddress: sellTokenAddress
     })
-    setInventory(await client.getAssets({ user: wallet, sell_orders: true }))
+    const assetResponse = await assetApi.listAssets({
+      user: wallet,
+      sellOrders: true
+    })
+    setInventory(assetResponse['data'])
   };
 
   // cancel sell order
@@ -46,7 +59,11 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
     await link.cancel({
       orderId: sellCancelOrder
     })
-    setInventory(await client.getAssets({ user: wallet, sell_orders: true }))
+    const assetResponse = await assetApi.listAssets({
+      user: wallet,
+      sellOrders: true
+    })
+    setInventory(assetResponse['data'])
   };
 
   // helper function to generate random ids
@@ -101,7 +118,11 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
       }]
     });
     console.log(`Token minted: ${result.results[0].token_id}`);
-    setInventory(await client.getAssets({ user: wallet, sell_orders: true }))
+    const assetResponse = await assetApi.listAssets({
+      user: wallet,
+      sellOrders: true
+    })
+    setInventory(assetResponse['data'])
   };
 
   async function mintv2() {
@@ -154,7 +175,11 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
     }]
     );
     console.log(`Token minted: ${result}`);
-    setInventory(await client.getAssets({ user: wallet, sell_orders: true }))
+    const assetResponse = await assetApi.listAssets({
+      user: wallet,
+      sellOrders: true
+    })
+    setInventory(assetResponse['data'])
   };
 
   return (
@@ -221,25 +246,25 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
       </div>
       <br />
       <div className='inline-mint'>
-      <div className='inventory-section'>
-      <div className='theader-mint'>
-          <h4 style={{ 'marginLeft': '21px' }}>Inventory:</h4>
-        </div>
-        <div className='inline-div'>
-          <div className='card-split'>
-            {inventory?.result?.map((val, i) => {
-              return <div key={i} className='cards'>
-                <img src={val?.image_url ?? ""} alt="profile" />
-                <p>{val?.name}</p>
-                <div>
-                  <span className='text-spn'>{val?.description}</span>
+        <div className='inventory-section'>
+          <div className='theader-mint'>
+            <h4 style={{ 'marginLeft': '21px' }}>Inventory:</h4>
+          </div>
+          <div className='inline-div'>
+            <div className='card-split'>
+              {inventory?.result?.map((val: any, i: any) => {
+                return <div key={i} className='cards'>
+                  <img src={val?.image_url ?? ""} alt="profile" />
+                  <p>{val?.name}</p>
+                  <div>
+                    <span className='text-spn'>{val?.description}</span>
+                  </div>
                 </div>
-              </div>
-            })}
+              })}
 
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
