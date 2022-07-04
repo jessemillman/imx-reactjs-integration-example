@@ -1,5 +1,6 @@
 import './App.css';
 import { Link, ImmutableXClient, ImmutableMethodResults } from '@imtbl/imx-sdk';
+import { getConfig, BalancesApi } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
@@ -13,6 +14,10 @@ require('dotenv').config();
 
 
 const App = () => {
+
+  const config = getConfig('ropsten');
+  const balanceApi = new BalancesApi(config.api);
+
   let navigate = useNavigate();
   // initialise Immutable X Link SDK
   const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
@@ -20,7 +25,7 @@ const App = () => {
   // general
   const [tab, setTab] = useState('marketplace');
   const [wallet, setWallet] = useState('undefined');
-  const [balance, setBalance] = useState<ImmutableMethodResults.ImmutableGetBalanceResult>(Object);
+  const [balance, setBalance] = useState<any>(Object);
   const [client, setClient] = useState<ImmutableXClient>(Object);
   const [sidebar, setSidebar] = useState(true)
 
@@ -40,7 +45,9 @@ const App = () => {
     // console.log('APP COMPONENT')
     const res = await link.setup({})
     setWallet(res.address)
-    setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
+    const balnaceresponce = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
+    console.log(balnaceresponce);
+    setBalance(balnaceresponce['data'])
 
   };
 
@@ -78,7 +85,7 @@ const App = () => {
   return (
     <div className="App">
       <div className='sidebar'>
-        {sidebar && <Sidebar  setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler}/>}
+        {sidebar && <Sidebar setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler} />}
         <div className='inner-section'>
           <div className='header-title'>
             {!sidebar && <div className='hamburger-div'>
@@ -114,18 +121,18 @@ const App = () => {
                 < Route
                   path={item.path}
                   key={key}
-                  element={(wallet === 'undefined' && !item.skip) ? <ConnectWalletSection/> : <item.element client={client}
+                  element={(wallet === 'undefined' && !item.skip) ? <ConnectWalletSection /> : <item.element client={client}
                     link={link}
                     wallet={wallet} />}
                 >
                 </Route>
                 // )
 
-                ))}
+              ))}
             </Routes>
-          
 
-  
+
+
             {/* {wallet === 'undefined' 
             return(
             <div>Connect wallet</div>
