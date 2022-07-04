@@ -132,10 +132,28 @@
   .cards {
     padding: 0.5em !important;
     margin: unset !important;
+    text-align: center;
   }
 
   .header-title{
     grid-template-columns: 1fr !important;
     height: unset !important;
+  }
+
+  .inline-controls{
+    grid-template-columns: unset !important;
+  }
+
+  .input-field{
+    margin-left: 10px !important;
+  }
+
+  .inline-mint{
+    padding: unset !important;
+    text-align: unset !important;
+  }
+
+  .card-split-invent{
+    grid-template-columns: 1fr !important;
   }
 }

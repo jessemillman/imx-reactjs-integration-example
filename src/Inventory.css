@@ -76,3 +76,8 @@
     text-align: center;
    margin-top: 8em;
 }
+
+.card-split-invent {
+    display: grid;
+    grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr
+  }

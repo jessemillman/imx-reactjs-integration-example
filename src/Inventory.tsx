@@ -251,7 +251,7 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
             <h4 style={{ 'marginLeft': '21px' }}>Inventory:</h4>
           </div>
           <div className='inline-div'>
-            <div className='card-split'>
+            <div className='card-split-invent'>
               {inventory?.result?.map((val: any, i: any) => {
                 return val['image_url'] != null ? (
                   <div key={i} className='cards'>
