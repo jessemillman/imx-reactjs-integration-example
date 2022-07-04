@@ -43,6 +43,9 @@ const App = () => {
     setBalance(await client.getBalance({ user: res.address, tokenAddress: 'eth' }))
 
   };
+  const disconnectWalletHandler=()=>{
+    setWallet('undefined')
+  }
 
   function handleTabs() {
     if (client.address) {
@@ -78,7 +81,7 @@ const App = () => {
   return (
     <div className="App">
       <div className='sidebar'>
-        {sidebar && <Sidebar  setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler}/>}
+        {sidebar && <Sidebar  setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler} disconnectWalletHandler={disconnectWalletHandler}/>}
         <div className='inner-section'>
           <div className='header-title'>
             {!sidebar && <div className='hamburger-div'>
