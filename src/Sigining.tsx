@@ -29,7 +29,7 @@ const Signing = ({ client, link, wallet }: SigningProps) => {
                     <div className='signin-input-controls'>
                         {/* <label>
                            User Name */}
-                        <input type="text" className='sigin-field' placeholder='User Name' value={signin} onChange={e => setSignin(e.target.value)} />
+                        <input type="text" className='sigin-field' value={signin} onChange={e => setSignin(e.target.value)} />
                         {/* </label> */}
                         <button className='invent-btns' onClick={sigin}>Sign In</button>
                     </div>
