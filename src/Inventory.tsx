@@ -23,8 +23,8 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
   const [sellTokenId, setSellTokenId] = useState('');
   const [sellTokenAddress, setSellTokenAddress] = useState('');
   const [sellCancelOrder, setSellCancelOrder] = useState('');
-
-  const config = getConfig('ropsten');
+  const networkType: any = process.env.REACT_APP_NETWORK_TYPE
+  const config = getConfig(networkType);
   const assetApi = new AssetsApi(config.api);
 
   useEffect(() => {

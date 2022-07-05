@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react';
+import { Link, ImmutableXClient } from '@imtbl/imx-sdk';
 import './Inventory.css';
 require('dotenv').config();
 
-const Signing = () => {
+interface SigningProps {
+    client: ImmutableXClient,
+    link: Link,
+    wallet: string
+}
 
-    const sigin = ()=> {
+const Signing = ({ client, link, wallet }: SigningProps) => {
 
+    const sigin = () => {
+        link.sign({
+            message: 'My awesome message',
+            description: 'Message that a user will see',
+        });
     }
 
     const [signin, setSignin] = useState("");
@@ -19,7 +29,7 @@ const Signing = () => {
                     <div className='signin-input-controls'>
                         {/* <label>
                            User Name */}
-                            <input type="text" className='sigin-field' placeholder='User Name' value={signin} onChange={e => setSignin(e.target.value)} />
+                        <input type="text" className='sigin-field' value={signin} onChange={e => setSignin(e.target.value)} />
                         {/* </label> */}
                         <button className='invent-btns' onClick={sigin}>Sign In</button>
                     </div>
