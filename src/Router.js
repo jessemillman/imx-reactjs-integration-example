@@ -34,6 +34,11 @@ const Router = () => {
             path: '/signing',
             element: Signing
         }
+        , {
+            skip: false,
+            path: '/marketplace',
+            element: Marketplace
+        }
 
     ];
     return routes;

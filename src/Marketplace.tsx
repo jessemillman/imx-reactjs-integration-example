@@ -26,22 +26,27 @@ const Marketplace = ({client, link}: MarketplaceProps) => {
     })
   };
 
-  return (
-    <div>
-      <div>
-        Buy asset:
-        <br/>
+  return (console.log(marketplace.result),
+    <div className='mint-div marketplace'>
+      <div className='inline-mint'>
+        <div className='theader-mint'>
+<h4>Buy asset:</h4>
+        </div>
+        <div className='inline-controls order '>
         <label>
           Order ID:
-          <input type="text" value={buyOrderId} onChange={e => setBuyOrderId(e.target.value)} />
+          <input type="text" className='input-field' value={buyOrderId} onChange={e => setBuyOrderId(e.target.value)} />
         </label>
-        <button onClick={buyNFT}>Buy</button>
+        <button onClick={buyNFT} className="invent-btns">Buy</button>
+        </div>
       </div>
       <br/><br/><br/>
-      <div>
-        Marketplace (active sell orders):
+      <div className='inline-mint'>
+      <div className='theader-mint'>
+      <h4>Marketplace (active sell orders):</h4>
+        </div>
         <br/>
-        {JSON.stringify(marketplace.result)}
+        {/* {JSON.stringify(marketplace.result)} */}
       </div>
     </div>
   );

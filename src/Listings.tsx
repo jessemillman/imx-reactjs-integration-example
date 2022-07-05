@@ -4,11 +4,13 @@ import { Link, ImmutableXClient, ImmutableMethodResults, ImmutableOrderStatus } 
 import './Listings.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Listings = () => {
 
   const [userdata, setUserData] = useState([]);
   const [buttonname, setButtonName] = useState('Gods Unchained');
 
+  const navigate=useNavigate()
   const buttonClick = (e:any) => {
     setButtonName(e.target.innerText)
   }
@@ -31,7 +33,7 @@ const Listings = () => {
 
         {/* {JSON.stringify(userdata)}; */}
         <div className='card-split'>
-
+{console.log(userdata)}
           {
             userdata.map((user: any, key) => {
               return (
@@ -49,8 +51,7 @@ const Listings = () => {
 
 
         </div>
-
-
+          <button className='buy-now-btn' onClick={()=>navigate("/marketplace")}>Buy Now</button>
       </div>
     </>
   )

@@ -63,3 +63,16 @@
   .sub-container{
     margin-left: 25px;
   }
+
+  .buy-now-btn{
+    position: fixed;
+    bottom: 32px;
+    right: 125px;
+    border-radius: 2em;
+    padding: 12px 30px;
+    background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
+    font-weight: 600;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }

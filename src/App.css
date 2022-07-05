@@ -116,6 +116,7 @@ align-items: center;
   padding: 2.7em;
   height: 52vh;
   overflow-y: scroll;
+  position: relative;
 }
 
 .hamburger-div {
