@@ -74,10 +74,32 @@
 
 .sub-img {
     text-align: center;
-   margin-top: 8em;
+    margin-top: 8em;
 }
 
 .card-split-invent {
     display: grid;
     grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr
-  }
+}
+
+.theader-signin {
+    text-align: center;
+}
+
+
+.signin-input-controls {
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr;
+    margin-left: 20px;
+    align-items: center;
+    place-content: center;
+}
+
+.sigin-field {
+    height: 35px;
+    min-width: 21em;
+    border-radius: 0.4em;
+    border: 1px solid #393636e3;
+    margin-top: 25px;
+    margin-right: 11px;
+}

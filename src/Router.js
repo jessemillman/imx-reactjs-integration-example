@@ -3,7 +3,7 @@ import Inventory from "./Inventory";
 import Marketplace from "./Marketplace";
 import listing from './Listings';
 import Listings from "./Listings";
-// import Signing from "./Signing";
+import Signing from "./Sigining";
 const Router = () => {
     const routes = [
         {
@@ -29,6 +29,10 @@ const Router = () => {
             skip: true,
             path: '*',
             element: Listings
+        }, {
+            skip: false,
+            path: '/signing',
+            element: Signing
         }
 
     ];
