@@ -14,8 +14,8 @@ require('dotenv').config();
 
 
 const App = () => {
-
-  const config = getConfig('ropsten');
+  const networkType: any = process.env.REACT_APP_NETWORK_TYPE
+  const config = getConfig(networkType);
   const balanceApi = new BalancesApi(config.api);
 
   let navigate = useNavigate();

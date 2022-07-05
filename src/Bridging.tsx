@@ -15,7 +15,8 @@ interface BridgingProps {
 const Bridging = ({ client, link, wallet }: BridgingProps) => {
   // withdrawals
   const location = useLocation();
-  const config = getConfig('ropsten');
+  const networkType: any = process.env.REACT_APP_NETWORK_TYPE
+  const config = getConfig(networkType);
   const withdrawal = new WithdrawalsApi(config.api);
   const [screenName, setScreenName] = useState("");
   const [preparingWithdrawals, setPreparingWithdrawals] = useState<ListWithdrawalsResponse>(Object);
@@ -33,12 +34,17 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
   const [completeTokenAddress, setCompleteTokenAddress] = useState('');
 
   useEffect(() => {
-    load()
+
     setScreenName(location?.pathname?.split("/")[1])
+    const checkPath = location?.pathname?.split("/")[1]
+    if (checkPath == 'withdrawal') {
+      load()
+    }
     console.log(screenName)
   }, [location?.pathname])
 
   async function load(): Promise<void> {
+    // if(screenName == 'withdrawal'){
     const includeWithdrawal = await withdrawal.listWithdrawals({
       user: wallet,
       rollupStatus: ImmutableRollupStatus.included
@@ -56,6 +62,8 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
       withdrawnToWallet: true
     })
     setCompletedWithdrawals(FinalWithdrawal.data) // confirmed on-chain in a batch and already withdrawn to L1 wallet
+    // }
+
   };
 
   // deposit an NFT
