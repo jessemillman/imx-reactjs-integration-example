@@ -112,7 +112,7 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
     <div className='mint-div'>
       <div className='inline-mint'>
         <div className='theader-mint'>
-          <h4 style={{ 'marginLeft': '21px' }}>EFT</h4>
+          <h4 style={{ 'marginLeft': '21px' }}>ETH</h4>
         </div>
         {screenName == 'deposit' &&
           <><div className='theader-mint'>
