@@ -28,11 +28,11 @@
 
 .header-title h1 {
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   width: 8em;
   padding: 0px 1em;
   padding-bottom: unset;
-  font-size: 38px;
+  font-size: 44px;
 }
 
 .header-btn {
@@ -43,18 +43,35 @@
 
 .header-btn .button1 {
   border-radius: 2em;
-  padding: 11px 22px;
+  padding: 12px 30px;
   background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
-  font-weight: bold;
+  font-weight: 600;
 }
+
+.header-btn .button1:hover {
+  opacity: .88;
+}
+
+#player{
+  border-radius: 26px !important;
+  overflow: hidden !important;
+}
+
 
 .header-btn .button2 {
   border-radius: 2em;
-  padding: 11px 18px;
-  background: #000;
-  border: 1px solid #ffff;
+  padding: 10px 28px;
+  background: transparent;
+  border: 2px solid #fff;
   color: #fff;
+  font-weight: 600;
   margin-left: 11px;
+}
+
+.header-btn .button2:hover {
+  padding: 9px 27px;
+  border-width: 3px;
+  opacity: 1;
 }
 
 .header-title {
@@ -63,7 +80,7 @@
   background-size: cover;
   display: grid;
   grid-template-columns: 0fr 1fr 3fr;
-  height: 16em;
+  height: 17em;
 }
 
 
@@ -80,14 +97,16 @@
 }
 
 .logoframe {
-  margin-top: 21px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .logoframe iframe {
   border: none;
-  height: 11em;
+  height: 100%;
   width: 18em;
-  border-radius: 59px 64px 64px 61px;
+  border-radius: 66px;
 }
 
 .sub-content {
@@ -95,7 +114,7 @@
   /* width: 100%;
   height: 100%; */
   padding: 2.7em;
-  height: 54vh;
+  height: 52vh;
   overflow-y: scroll;
 }
 

@@ -55,7 +55,7 @@ li span {
 
 .sidebar-options{
     list-style-type: none;
-    margin-top: 72px;
+    margin-top: 77px;
     border-top: 1px solid #686565;
 }
 
@@ -107,22 +107,25 @@ li span {
 .sidebar-options .active-tab i,.sidebar-options .active-tab span{
     color:#989898;
 }
+
+.sidebar-options .tab i:hover,.sidebar-options .tab span:hover{
+    opacity: .75;
+    color: #989898;
+}
 .pointer{
     cursor: pointer;
 }
 
 .connect-btn {
-    height: 35px;
     font-weight: bold;
     border-radius: 2em;
-    width: 12em;
-    padding: 8px;
+    padding: 12px 36px;
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
     cursor: pointer;
 }
 
 .sigin-btn{
-    margin-top: 44px;
+    margin-top: 48px;
     margin-left: 4px;
     display: inline-block;
     position: relative;
@@ -137,22 +140,22 @@ li span {
     padding: 4px;
     position: absolute;
     border-radius: 10px;
-    top: 11px;
-    left: 9px;
+    top: 15px;
+    left: 14px;
     content: "";
 }
 
 .address-text .fa-angle-down{
     position: absolute;
-    right: 9px;
-    top: 10px;
+    right: 14px;
+    top: 14px;
 }
 
 .addressDropdown{
     position: absolute;
     background: #333131;
     width: 163px;
-    top: 41px;
+    top: 52px;
     border-radius: 6px;
 }
 
