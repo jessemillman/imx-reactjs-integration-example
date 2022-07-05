@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, ImmutableXClient, ImmutableMethodResults } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient } from '@imtbl/imx-sdk';
 import { getConfig, BalancesApi } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
 import { useNavigate, Route, Routes } from 'react-router-dom';
