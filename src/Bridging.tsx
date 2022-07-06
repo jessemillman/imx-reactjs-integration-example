@@ -48,7 +48,7 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
     // if(screenName == 'withdrawal'){
     const includeWithdrawal = await withdrawal.listWithdrawals({
       user: wallet,
-      rollupStatus: ImmutableRollupStatus.included
+      rollupStatus: ImmutableRollupStatus.included // ImmutableRollupStatus not available in core-sdk. please check and let me know
     })
     setPreparingWithdrawals(includeWithdrawal.data) // included in batch awaiting confirmation
 
@@ -243,29 +243,28 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
 
         }
 
-        {/* </div> */}
-        {screenName == 'withdrawal' &&
+        {/* {screenName == 'withdrawal' &&
 
           <>
             <div className='theader-mint'>
               <h4 style={{ 'marginLeft': '21px' }}> Withdrawals being prepared:</h4>
 
-              {/* {JSON.stringify(preparingWithdrawals)} */}
+              {JSON.stringify(preparingWithdrawals)}
             </div>
             <div className='theader-mint'>
               <h4 style={{ 'marginLeft': '21px' }}>Ready for withdrawal:</h4>
 
-              {/* {JSON.stringify(readyWithdrawals)} */}
+              {JSON.stringify(readyWithdrawals)}
             </div>
 
             <div className='theader-mint'>
               <h4 style={{ 'marginLeft': '21px' }}>  Withdrawn to wallet:</h4>
 
-              {/* {JSON.stringify(completedWithdrawals)} */}
+              {JSON.stringify(completedWithdrawals)}
             </div>
           </>
 
-        }
+        } */}
       </div>
 
 

@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, ImmutableXClient } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, SyncStateEventPayload,ProviderPreference } from '@imtbl/imx-sdk';
 import { getConfig, BalancesApi } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
 import {  Route, Routes } from 'react-router-dom';
@@ -9,6 +9,7 @@ import Bridging from './Bridging';
 import Sidebar from './Components/Sidebar/Sidebar';
 import getRoutes from './Router';
 import ConnectWalletSection from './Components/ConnectWalletSection/ConnectWalletSection';
+import State from './State';
 require('dotenv').config();
 
 
@@ -28,11 +29,16 @@ const App = () => {
   const [client, setClient] = useState<ImmutableXClient>(Object);
   const [sidebar, setSidebar] = useState(true)
   const [selectedOrderId, setSelectedOrderId] = useState('');
-
+  const [statemaintain, setStatemaintain] = useState<any>([]);
+  const stateArr: any = [];
   useEffect(() => {
     // navigate('/listing')
     buildIMX()
   }, [])
+
+  useEffect(() => {
+    // setStatemaintain(stateArr)
+  }, [statemaintain])
 
   // initialise an Immutable X Client to interact with apis more easily
   async function buildIMX() {
@@ -43,14 +49,30 @@ const App = () => {
   // register and/or setup a user
   async function linkSetup(): Promise<void> {
     // console.log('APP COMPONENT')
+    // const res = await link.setup({providerPreference:ProviderPreference.NONE})
     const res = await link.setup({})
+  
     setWallet(res.address)
     const balnaceresponce = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
-    console.log(balnaceresponce);
     setBalance(balnaceresponce['data'])
 
+    const syncStateObservable = await link.syncState({})
+    syncStateObservable.subscribe((syncStateEvent: any) => {
+      // let isavailable = stateArr.filter((singlestate: any) => {
+      //   return singlestate.connectedWalletAddress.toLowerCase() == syncStateEvent['connectedWalletAddress'].toLowerCase()
+      // })
+      // if (isavailable.length == 0) {
+        // setTimeout(()=>{
+          // stateArr.push(syncStateEvent)
+          // console.log('inser', stateArr)
+          setStatemaintain([syncStateEvent])
+        // },100)
+       
+      // }
+    })
+
   };
-  const disconnectWalletHandler=()=>{
+  const disconnectWalletHandler = () => {
     setWallet('undefined')
 
   }
@@ -90,7 +112,7 @@ const App = () => {
   return (
     <div className="App">
       <div className='sidebar'>
-        {sidebar && <Sidebar  setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler} disconnectWalletHandler={disconnectWalletHandler}/>}
+        {sidebar && <Sidebar setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler} disconnectWalletHandler={disconnectWalletHandler} />}
         <div className='inner-section'>
           <div className='header-title'>
             {!sidebar && <div className='hamburger-div'>
@@ -112,14 +134,16 @@ const App = () => {
 
 
             <Routes>
+            
               {getRoutes().map((item, key) => (
 
-                // item.path=='/marketplace' ? (
+                // item.path == '/state' ? (
                 //   < Route
-                //     path={item.path}
+                //     path='/state'
                 //     key={key}
-                //     element={<item.element  client={client}
-                //     link={link} />}
+                //     element={(wallet === 'undefined' && !item.skip) ? <ConnectWalletSection /> : <item.element client={client}
+                //       link={link}
+                //       wallet={wallet} stateDetails={stateArr} />}
                 //   >
                 //   </Route>
                 // ) : (
@@ -129,7 +153,7 @@ const App = () => {
                   element={(wallet&&wallet!=="undefined")||item.skip?<item.element client={client} selectedOrderId={selectedOrderId}
                   setSelectedOrderId={setSelectedOrderId}
                     link={link}
-                    wallet={wallet} sigin={linkSetup}/>:<ConnectWalletSection/>}
+                    wallet={wallet} sigin={linkSetup} stateDetails={statemaintain}/>:<ConnectWalletSection/>}
                 >
                 </Route>
                 // )

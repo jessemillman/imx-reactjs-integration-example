@@ -87,16 +87,16 @@
 }
 
 .theader-signin {
-    text-align: center;
+    /* text-align: center; */
 }
 
 
 .signin-input-controls {
     display: grid;
-    grid-template-columns: 0.2fr 0.2fr;
+    grid-template-columns: 0.2fr 0.2fr 0.8fr;
     margin-left: 20px;
     align-items: center;
-    place-content: center;
+    /* place-content: center; */
 }
 
 .sigin-field {
@@ -106,4 +106,27 @@
     border: 1px solid #393636e3;
     margin-top: 25px;
     margin-right: 11px;
+}
+
+.text-area{
+    margin-left: 1.8em;
+    width: 35em;
+}
+
+.sigin-div{
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr;
+}
+
+.State-details{
+    display: grid;
+    grid-template-columns: 0.4fr 0.1fr 0fr;
+    margin-left: 2em;
+    row-gap: 1em;
+    margin-top: 27px;
+}
+
+.state-value{
+    font-weight: 600;
+    
 }
