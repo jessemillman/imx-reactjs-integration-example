@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+
 import { Link, ImmutableXClient, SyncStateEventPayload, SyncStateEventTypes } from '@imtbl/imx-sdk';
 import './Inventory.css';
 require('dotenv').config();
@@ -6,25 +6,13 @@ require('dotenv').config();
 interface StateProps {
     client: ImmutableXClient,
     link: Link,
-    wallet: string
+    wallet: string,
+    stateDetails?: any,
 }
 
 
-const State = ({ client, link, wallet }: StateProps) => {
+const State = ({ client, link, wallet, stateDetails }: StateProps) => {
 
-    const [stateDetail, SetStateDetails] = useState<any>();
-    useEffect(() => {
-        getState();
-    }, [])
-
-    const getState = async () => {
-        const syncStateObservable = await link.syncState({})
-
-        syncStateObservable.subscribe((syncStateEvent: SyncStateEventPayload) => {
-            SetStateDetails(syncStateEvent);
-            console.log('syncStateEvent', syncStateEvent) // 'syncStateEvent', { eventType: 'INIT', connectedNetworkId: '0x3', connectedWalletAddress: '0x123456789...' }
-        })
-    }
     return (
         <>
             <div className='mint-div'>
@@ -33,20 +21,26 @@ const State = ({ client, link, wallet }: StateProps) => {
                         <div>
                             <h3 style={{ 'marginLeft': '21px' }}>State Details</h3>
                         </div>
+                        {
+                            stateDetails.map((state: any, key: any) => {
+                                return (
+                                    <div key={key} className="State-details">
+                                        <label>Event Type</label>
+                                        <span>:</span>
+                                        <span>{state?.eventType}</span>
 
-                        <div className="State-details">
-                            <label>Event Type</label>
-                            <span>:</span>
-                            <span>{stateDetail?.eventType}</span>
+                                        <label>Connected Network Id</label>
+                                        <span>:</span>
+                                        <span>{state?.connectedNetworkId}</span>
 
-                            <label>Connected Network Id</label>
-                            <span>:</span>
-                            <span>{stateDetail?.connectedNetworkId}</span>
+                                        <label>Connected Wallet Address</label>
+                                        <span>:</span>
+                                        <span>{state?.connectedWalletAddress}</span>
+                                    </div>
+                                )
+                            })
+                        }
 
-                            <label>Connected Wallet Address</label>
-                            <span>:</span>
-                            <span>{stateDetail?.connectedWalletAddress}</span>
-                        </div>
 
                     </div>
 
