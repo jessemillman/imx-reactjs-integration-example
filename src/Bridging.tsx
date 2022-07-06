@@ -47,7 +47,7 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
     // if(screenName == 'withdrawal'){
     const includeWithdrawal = await withdrawal.listWithdrawals({
       user: wallet,
-      rollupStatus: ImmutableRollupStatus.included
+      rollupStatus: ImmutableRollupStatus.included // ImmutableRollupStatus not available in core-sdk. please check and let me know
     })
     setPreparingWithdrawals(includeWithdrawal.data) // included in batch awaiting confirmation
 
