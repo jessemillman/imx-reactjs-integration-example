@@ -32,7 +32,7 @@ const Signing = ({ client, link, wallet }: SigningProps) => {
                     <div className='sigin-div'>
                         <div>
                             <div className='theader-signin'>
-                                <h3 style={{ 'marginLeft': '21px' }}>Sign In </h3>
+                                <h3 style={{ 'marginLeft': '21px' }}>Signing </h3>
                             </div>
                             <div className='signin-input-controls'>
                                 {/* <label>

@@ -125,3 +125,8 @@
     row-gap: 1em;
     margin-top: 27px;
 }
+
+.state-value{
+    font-weight: 600;
+    
+}

@@ -27,15 +27,15 @@ const State = ({ client, link, wallet, stateDetails }: StateProps) => {
                                     <div key={key} className="State-details">
                                         <label>Event Type</label>
                                         <span>:</span>
-                                        <span>{state?.eventType}</span>
+                                        <span className='state-value'>{state?.eventType}</span>
 
                                         <label>Connected Network Id</label>
                                         <span>:</span>
-                                        <span>{state?.connectedNetworkId}</span>
+                                        <span className='state-value'>{state?.connectedNetworkId}</span>
 
                                         <label>Connected Wallet Address</label>
                                         <span>:</span>
-                                        <span>{state?.connectedWalletAddress}</span>
+                                        <span className='state-value'>{state?.connectedWalletAddress}</span>
                                     </div>
                                 )
                             })

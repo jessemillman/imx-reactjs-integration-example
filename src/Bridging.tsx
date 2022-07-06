@@ -226,29 +226,28 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
 
         }
 
-        {/* </div> */}
-        {screenName == 'withdrawal' &&
+        {/* {screenName == 'withdrawal' &&
 
           <>
             <div className='theader-mint'>
               <h4 style={{ 'marginLeft': '21px' }}> Withdrawals being prepared:</h4>
 
-              {/* {JSON.stringify(preparingWithdrawals)} */}
+              {JSON.stringify(preparingWithdrawals)}
             </div>
             <div className='theader-mint'>
               <h4 style={{ 'marginLeft': '21px' }}>Ready for withdrawal:</h4>
 
-              {/* {JSON.stringify(readyWithdrawals)} */}
+              {JSON.stringify(readyWithdrawals)}
             </div>
 
             <div className='theader-mint'>
               <h4 style={{ 'marginLeft': '21px' }}>  Withdrawn to wallet:</h4>
 
-              {/* {JSON.stringify(completedWithdrawals)} */}
+              {JSON.stringify(completedWithdrawals)}
             </div>
           </>
 
-        }
+        } */}
       </div>
 
 
