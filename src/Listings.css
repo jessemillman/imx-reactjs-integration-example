@@ -17,7 +17,11 @@
     cursor: pointer;
   }
 
-  .cards:hover{
+  .cards .img-div{
+    text-align: center;
+  }
+
+  .cards-selected{
     background-color: rgb(125 128 135);;
     border: 1px solid #fff;
     border-radius: 2em;
@@ -60,7 +64,7 @@
   }
 
   .connect-wallet-section{
-    height: 50vh;
+    height: 41vh;
     text-align: center;
     display: flex;
     justify-content: center;

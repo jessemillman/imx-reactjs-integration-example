@@ -2,7 +2,7 @@ import './App.css';
 import { Link, ImmutableXClient } from '@imtbl/imx-sdk';
 import { getConfig, BalancesApi } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
-import { useNavigate, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
 import Inventory from './Inventory';
 import Bridging from './Bridging';
@@ -18,7 +18,6 @@ const App = () => {
   const config = getConfig(networkType);
   const balanceApi = new BalancesApi(config.api);
 
-  let navigate = useNavigate();
   // initialise Immutable X Link SDK
   const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
 
@@ -28,6 +27,7 @@ const App = () => {
   const [balance, setBalance] = useState<any>(Object);
   const [client, setClient] = useState<ImmutableXClient>(Object);
   const [sidebar, setSidebar] = useState(true)
+  const [selectedOrderId, setSelectedOrderId] = useState('');
 
   useEffect(() => {
     // navigate('/listing')
@@ -52,7 +52,7 @@ const App = () => {
   };
   const disconnectWalletHandler=()=>{
     setWallet('undefined')
-    navigate('/listing')
+
   }
 
   function handleTabs() {
@@ -76,6 +76,7 @@ const App = () => {
           return <Marketplace
             client={client}
             link={link}
+            selectedOrderId={selectedOrderId}
           />
       }
     }
@@ -125,9 +126,10 @@ const App = () => {
                 < Route
                   path={item.path}
                   key={key}
-                  element={(wallet === 'undefined' && !item.skip) ? <ConnectWalletSection /> : <item.element client={client}
+                  element={(wallet&&wallet!=="undefined")||item.skip?<item.element client={client} selectedOrderId={selectedOrderId}
+                  setSelectedOrderId={setSelectedOrderId}
                     link={link}
-                    wallet={wallet} />}
+                    wallet={wallet} sigin={linkSetup}/>:<ConnectWalletSection/>}
                 >
                 </Route>
                 // )

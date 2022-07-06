@@ -7,7 +7,7 @@ require('dotenv').config();
 interface InventoryProps {
   client: ImmutableXClient,
   link: Link,
-  wallet: string
+  wallet: string,
 }
 
 const Inventory = ({ client, link, wallet }: InventoryProps) => {

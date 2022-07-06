@@ -86,6 +86,7 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
                     {addressDropdown && <div className="addressDropdown">
                         <div className="disconnect-wallet pointer" onClick={() => {
                             disconnectWalletHandler()
+                            navigate('/listing')
                             setAddressDropdown(false)
                         }}>
                             Disconnect Wallet
@@ -97,8 +98,10 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
                 {
                     sidebarConfig.map((menu, ind) => {
                         return (
-                            <li key={ind} className={`${menu.Link.includes(sidebarTab) ? "active-tab" : "tab"} ${(!address || address === "undefined") && "active-tab"}  pointer`}
-                                onClick={() => { (address && address !== "undefined") && navigate(menu.Link) }}>
+                            <li key={ind} className={`${menu.Link.includes(sidebarTab) ? "active-tab" : "tab"}   pointer`}
+                            // ${(!address || address === "undefined") && "active-tab"}
+                                onClick={() => {  navigate(menu.Link) }}>
+                                    {/* (address && address !== "undefined") && */}
                                 <i className={menu.icon} aria-hidden="true"></i>
                                 <span>{menu.LabelName}</span>
                             </li>

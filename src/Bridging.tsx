@@ -10,6 +10,7 @@ interface BridgingProps {
   client: ImmutableXClient,
   link: Link,
   wallet: string
+
 }
 
 const Bridging = ({ client, link, wallet }: BridgingProps) => {
@@ -116,6 +117,15 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
     })
   };
 
+  async function fiatToCryptoHandler(): Promise<void> {
+    // console.log('APP COMPONENT')
+    const res = await link.fiatToCrypto({})
+   
+    console.log(res);
+   
+
+  };
+
   return (
     <div className='mint-div'>
       <div className='inline-mint'>
@@ -132,6 +142,7 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
                 <input type="text" className='input-field' value={depositAmount} onChange={e => setDepositAmount(e.target.value)} />
               </label>
               <button className='invent-btns' onClick={depositETH}>Deposit ETH</button>
+              
             </div></>}
 
 
@@ -183,6 +194,12 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
               </label>
 
               <button className='invent-btns' onClick={depositNFT}>Deposit NFT</button>
+              <div>
+              <div className='theader-mint'>
+            <h4> Fiat to Crypto Deposit:</h4>
+          </div>
+              <button className='invent-btns' style={{ marginTop: '0px' }} onClick={fiatToCryptoHandler}>Deposit Fiat</button>
+              </div>
             </div></>}
 
 

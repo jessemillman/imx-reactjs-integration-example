@@ -4,20 +4,25 @@ require('dotenv').config();
 
 interface MarketplaceProps {
   client: ImmutableXClient,
+  selectedOrderId:string,
   link: Link
 }
 
-const Marketplace = ({client, link}: MarketplaceProps) => {
-  const [marketplace, setMarketplace] = useState<ImmutableMethodResults.ImmutableGetOrdersResult>(Object);
+const Marketplace = ({client,selectedOrderId, link}: MarketplaceProps) => {
+  // const [marketplace, setMarketplace] = useState<ImmutableMethodResults.ImmutableGetOrdersResult>(Object);
   const [buyOrderId, setBuyOrderId] = useState('');
 
-  useEffect(() => {
-    load()
-  }, [])
+  // useEffect(() => {
+  //   load()
+  // }, [])
 
-  async function load(): Promise<void> {
-    setMarketplace(await client.getOrders({status: ImmutableOrderStatus.active, user: '0xc120a52ad90bb926bafcdfc9161740dcf4a2cea1'}))
-  };
+  useEffect(()=>{
+    setBuyOrderId(selectedOrderId)
+  },[selectedOrderId])
+
+  // async function load(): Promise<void> {
+  //   setMarketplace(await client.getOrders({status: ImmutableOrderStatus.active, user: '0xc120a52ad90bb926bafcdfc9161740dcf4a2cea1'}))
+  // };
 
   // buy an asset
   async function buyNFT() {
@@ -26,11 +31,11 @@ const Marketplace = ({client, link}: MarketplaceProps) => {
     })
   };
 
-  return (console.log(marketplace.result),
+  return (
     <div className='mint-div marketplace'>
       <div className='inline-mint'>
         <div className='theader-mint'>
-<h4>Buy asset:</h4>
+          <h4>Buy asset:</h4>
         </div>
         <div className='inline-controls order '>
         <label>
@@ -40,14 +45,14 @@ const Marketplace = ({client, link}: MarketplaceProps) => {
         <button onClick={buyNFT} className="invent-btns">Buy</button>
         </div>
       </div>
-      <br/><br/><br/>
+      {/* <br/><br/><br/>
       <div className='inline-mint'>
       <div className='theader-mint'>
       <h4>Marketplace (active sell orders):</h4>
         </div>
         <br/>
-        {/* {JSON.stringify(marketplace.result)} */}
-      </div>
+        {JSON.stringify(marketplace.result)}
+      </div> */}
     </div>
   );
 }
