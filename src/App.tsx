@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, ImmutableXClient, SyncStateEventPayload } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, SyncStateEventPayload,ProviderPreference } from '@imtbl/imx-sdk';
 import { getConfig, BalancesApi } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
 import { useNavigate, Route, Routes } from 'react-router-dom';
@@ -49,6 +49,7 @@ const App = () => {
   // register and/or setup a user
   async function linkSetup(): Promise<void> {
     // console.log('APP COMPONENT')
+    // const res = await link.setup({providerPreference:ProviderPreference.NONE})
     const res = await link.setup({})
   
     setWallet(res.address)
