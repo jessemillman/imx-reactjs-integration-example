@@ -10,29 +10,52 @@ interface SigningProps {
 }
 
 const Signing = ({ client, link, wallet }: SigningProps) => {
+    const [signin, setSignin] = useState("");
+    const [Response, setResponse] = useState("");
 
     const sigin = () => {
-        link.sign({
-            message: 'Welcome to Wallet',
+        const test = link.sign({
+            message: `${signin}`,
             description: 'Message that a user will see',
+        }).then((reponse) => {
+            setResponse(reponse.result)
         });
+
+        console.log(test)
     }
 
-    const [signin, setSignin] = useState("");
+
     return (
         <>
             <div className='mint-div'>
                 <div className='inline-mint'>
-                    <div className='theader-signin'>
-                        <h3 style={{ 'marginLeft': '21px' }}>Sign In </h3>
-                    </div>
-                    <div className='signin-input-controls'>
-                        {/* <label>
+                    <div className='sigin-div'>
+                        <div>
+                            <div className='theader-signin'>
+                                <h3 style={{ 'marginLeft': '21px' }}>Sign In </h3>
+                            </div>
+                            <div className='signin-input-controls'>
+                                {/* <label>
                            User Name */}
-                        <input type="text" className='sigin-field' value={signin} onChange={e => setSignin(e.target.value)} />
-                        {/* </label> */}
-                        <button className='invent-btns' onClick={sigin}>Sign In</button>
+                                <input type="text" className='sigin-field' placeholder='input message' value={signin} onChange={e => setSignin(e.target.value)} />
+                                {/* </label> */}
+                                <button className='invent-btns' onClick={sigin}>Signing</button>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className='theader-signin'>
+                                <h3 style={{ 'marginLeft': '21px' }}>Response </h3>
+                            </div>
+                            <textarea disabled={true} className='text-area' rows={5} cols={5} value={Response}></textarea>
+
+                        </div>
                     </div>
+
+
+
+
                 </div>
                 <br />
             </div>

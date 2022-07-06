@@ -4,9 +4,10 @@ import Marketplace from "./Marketplace";
 import Listings from "./Listings";
 import Signing from "./Sigining";
 import { Navigate } from "react-router-dom";
+import State from "./State";
 
 const Router = () => {
-    const RedirectHandler=()=>{
+    const RedirectHandler = () => {
         return <Navigate to="/listing" />
     }
     const routes = [
@@ -42,7 +43,12 @@ const Router = () => {
             skip: false,
             path: '/marketplace',
             element: Marketplace
+        }, {
+            skip: false,
+            path: '/state',
+            element: State
         }
+
 
     ];
     return routes;
