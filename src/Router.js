@@ -1,10 +1,14 @@
 import Bridging from "./Bridging";
 import Inventory from "./Inventory";
 import Marketplace from "./Marketplace";
-import listing from './Listings';
 import Listings from "./Listings";
 import Signing from "./Sigining";
+import { Navigate } from "react-router-dom";
+
 const Router = () => {
+    const RedirectHandler=()=>{
+        return <Navigate to="/listing" />
+    }
     const routes = [
         {
             skip: true,
@@ -27,8 +31,8 @@ const Router = () => {
             element: Bridging,
         }, {
             skip: true,
-            path: '*',
-            element: Listings
+            path: '/',
+            element: RedirectHandler
         }, {
             skip: false,
             path: '/signing',

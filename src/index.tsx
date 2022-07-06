@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import CustomRouter from './Components/CustomRouter/CustomRouter';
+import { createBrowserHistory } from "history";
 
+const history=createBrowserHistory()
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <CustomRouter history={history}>
       <App />
-    </BrowserRouter>
+    </CustomRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
