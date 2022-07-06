@@ -13,7 +13,7 @@ const Signing = ({ client, link, wallet }: SigningProps) => {
 
     const sigin = () => {
         link.sign({
-            message: 'My awesome message',
+            message: 'Welcome to Wallet',
             description: 'Message that a user will see',
         });
     }
