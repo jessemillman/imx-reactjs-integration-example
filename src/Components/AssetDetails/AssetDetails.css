@@ -1,0 +1,44 @@
+.main-asset {
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+}
+
+.img-section {
+    /* text-align: center; */
+}
+
+.img-section img {
+    width: 25em;
+    height: 30em;
+}
+
+.btn-position {
+    text-align: center;
+}
+
+.btn-section {
+    border: 1px solid #b5a0a0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 1em;
+    background: #b5a0a0;
+    margin-top: 10px;
+}
+
+.own-label {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    font-style: normal;
+    color: rgb(193, 193, 193);
+    margin: 0px 0px 32px;
+}
+
+.eth-amount {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    font-style: normal;
+    color: rgb(61 58 58);
+    display: inline;
+}

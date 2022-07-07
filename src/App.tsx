@@ -1,8 +1,8 @@
 import './App.css';
-import { Link, ImmutableXClient, SyncStateEventPayload,ProviderPreference } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, SyncStateEventPayload, ProviderPreference } from '@imtbl/imx-sdk';
 import { getConfig, BalancesApi } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
-import {  Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Marketplace from './Marketplace';
 import Inventory from './Inventory';
 import Bridging from './Bridging';
@@ -30,6 +30,7 @@ const App = () => {
   const [sidebar, setSidebar] = useState(true)
   const [selectedOrderId, setSelectedOrderId] = useState('');
   const [statemaintain, setStatemaintain] = useState<any>([]);
+  const [assetdetail, setAssets] = useState();
   const stateArr: any = [];
   useEffect(() => {
     // navigate('/listing')
@@ -49,11 +50,12 @@ const App = () => {
   // register and/or setup a user
   async function linkSetup(): Promise<void> {
     // console.log('APP COMPONENT')
-    // const res = await link.setup({providerPreference:ProviderPreference.NONE})
-    const res = await link.setup({})
-  
+    const res = await link.setup({ providerPreference: ProviderPreference.NONE })
+    // const res = await link.setup({})
+
     setWallet(res.address)
     const balnaceresponce = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
+    console.log('balnaceresponce', balnaceresponce)
     setBalance(balnaceresponce['data'])
 
     const syncStateObservable = await link.syncState({})
@@ -62,12 +64,12 @@ const App = () => {
       //   return singlestate.connectedWalletAddress.toLowerCase() == syncStateEvent['connectedWalletAddress'].toLowerCase()
       // })
       // if (isavailable.length == 0) {
-        // setTimeout(()=>{
-          // stateArr.push(syncStateEvent)
-          // console.log('inser', stateArr)
-          setStatemaintain([syncStateEvent])
-        // },100)
-       
+      // setTimeout(()=>{
+      // stateArr.push(syncStateEvent)
+      // console.log('inser', stateArr)
+      setStatemaintain([syncStateEvent])
+      // },100)
+
       // }
     })
 
@@ -134,7 +136,7 @@ const App = () => {
 
 
             <Routes>
-            
+
               {getRoutes().map((item, key) => (
 
                 // item.path == '/state' ? (
@@ -150,10 +152,10 @@ const App = () => {
                 < Route
                   path={item.path}
                   key={key}
-                  element={(wallet&&wallet!=="undefined")||item.skip?<item.element client={client} selectedOrderId={selectedOrderId}
-                  setSelectedOrderId={setSelectedOrderId}
+                  element={(wallet && wallet !== "undefined") || item.skip ? <item.element client={client} selectedOrderId={selectedOrderId}
+                    setSelectedOrderId={setSelectedOrderId}
                     link={link}
-                    wallet={wallet} sigin={linkSetup} stateDetails={statemaintain}/>:<ConnectWalletSection/>}
+                    wallet={wallet} sigin={linkSetup} stateDetails={statemaintain} details={assetdetail} setAssets ={setAssets} /> : <ConnectWalletSection />}
                 >
                 </Route>
                 // )

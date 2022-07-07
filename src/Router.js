@@ -5,6 +5,7 @@ import Listings from "./Listings";
 import Signing from "./Sigining";
 import { Navigate } from "react-router-dom";
 import State from "./State";
+import AssetDetails from "./Components/AssetDetails/AssetDetails";
 
 const Router = () => {
     const RedirectHandler = () => {
@@ -47,6 +48,11 @@ const Router = () => {
             skip: false,
             path: '/state',
             element: State
+        },
+        {
+            skip: false,
+            path: '/:pageName/assets/:id',
+            element: AssetDetails
         }
 
 
