@@ -42,3 +42,15 @@
     color: rgb(61 58 58);
     display: inline;
 }
+
+.amount {
+    float: left;
+
+}
+
+.btn-style {
+    display: grid;
+    grid-template-columns: 0.3fr 0.3fr;
+    column-gap: 11px;
+    margin-top: 10px;
+}
