@@ -50,7 +50,7 @@ const Router = () => {
             element: State
         },
         {
-            skip: false,
+            skip: true,
             path: '/:pageName/assets/:id',
             element: AssetDetails
         }

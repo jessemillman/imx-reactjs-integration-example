@@ -4,7 +4,9 @@
 }
 
 .img-section {
-    /* text-align: center; */
+    border: 1px solid #c8c8c8;
+    border-radius: 11px;
+    margin-right: 40px;
 }
 
 .img-section img {
@@ -16,16 +18,16 @@
     text-align: center;
 }
 
-.btn-section {
-    border: 1px solid #b5a0a0;
+.action-section {
+    border: 1px solid #f4f3f3;
     padding: 20px;
     text-align: center;
     border-radius: 1em;
-    background: #b5a0a0;
-    margin-top: 10px;
+    background: #f4f3f3;
+    margin-top: 20px;
 }
 
-.btn-section .fa-ethereum{
+.action-section .fa-ethereum{
     font-size: 18px;
     margin-left: 0px;
     margin-right: 4px;
@@ -36,14 +38,17 @@
     align-items: center;
 }
 
-.btn-section .eth-amount{
+.action-section .eth-amount{
     font-size: 30px;
     font-weight: 700;
+    display: flex;
+    align-items: center;
 }
 
-.btn-section .usd-amount{
+.action-section .usd-amount{
     font-size: 16px;
     font-weight: 400;
+    margin-left: 5px;
 }
 
 .own-label {
@@ -67,6 +72,8 @@
 
 .asset .sub-container{
     margin-left: 0px;
+    display: flex;
+    align-items: center;
 }
 
 .asset .sub-container img{
@@ -82,6 +89,7 @@
     margin-left: 8px;
     color: rgb(99 93 93);
     font-weight: 400;
+    margin-top: 12px;
 }
 
 .asset h1{
@@ -93,7 +101,7 @@
     margin-bottom: 13px;
 }
 
-.buy-now-btn{
+.buy-now-button{
     width: 100%;
     height: 50px;
     font-size: 18px;
@@ -110,4 +118,13 @@
     grid-template-columns: 0.3fr 0.3fr;
     column-gap: 11px;
     margin-top: 10px;
+}
+
+
+.action-section{
+    position: relative;
+}
+
+.asset-img{
+
 }

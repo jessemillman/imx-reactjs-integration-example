@@ -8,6 +8,7 @@ interface AsserProps {
     client: ImmutableXClient,
     link: Link,
     wallet: string,
+    sigin: () => any,
     details?: any;
 }
 type LocationState = {
@@ -17,17 +18,19 @@ type LocationState = {
     }
 }
 
-const AssetDetails = ({ client, link, wallet, details }: AsserProps) => {
+const AssetDetails = ({ client, link, wallet,sigin, details }: AsserProps) => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const clickFn = () => {
-
-    }
     const { pageName, id } = useParams();
 
+    async function buyNFT() {
+        await link.buy({
+          orderIds:[details.order_id.toString()]
+        })
+      };
 
     return (<>
         <div className='mint-div asset'>
@@ -39,8 +42,10 @@ const AssetDetails = ({ client, link, wallet, details }: AsserProps) => {
                     </div>
                     <div className="detail-section">
                         <div className='sub-container'>
+                           
                             <img className='avatar-img'
                                 src={pageName === "listing" ? details['sell']['data']['properties']['collection']['icon_url'] : details['collection'].icon_url} alt="" />
+                        
                             <span className='text-spn'>{pageName === "listing" ? details['sell']['data']['properties']['collection']['name'] : details['collection'].name}</span>
                         </div>
                         <div>
@@ -50,22 +55,17 @@ const AssetDetails = ({ client, link, wallet, details }: AsserProps) => {
                                 <span className='eth-amount'>{details?.user?.slice(0, 8)}...{details?.user?.slice(-4)}</span>
                             </div>
                         </div>
-
-                        <div className="detail-section">
-                            <div className='sub-container'>
-                                <img className='avatar-img'
-                                    src={pageName === "listing" ? details['sell']['data']['properties']['collection']['icon_url'] : details['collection'].icon_url} alt="" />
-                                <span className='text-spn'>{pageName === "listing" ? details['sell']['data']['properties']['collection']['name'] : details['collection'].name}</span>
-                            </div>
+                        <div className="action-section">
                             <div className="amount-section">
                                 <i className='fab fa-ethereum'></i>
                                 <span className="eth-amount">0.14105<span className="usd-amount">($165.28 USD)</span></span>
                             </div>
-                            {pageName === "listing" ? <button onClick={() => clickFn()} className="invent-btns btn-position buy-now-btn">Buy</button> : <div className="btn-style ">
+                            {pageName === "listing" ? <button onClick={() => {(wallet && wallet !== "undefined")?buyNFT():sigin()}} className="invent-btns btn-position buy-now-button">Buy</button> : <div className="btn-style ">
                                 <button onClick={() => setShow(true)} className="invent-btns btn-position">transfer</button>
                                 <button onClick={() => setShow(true)} className="invent-btns btn-position">Sale</button>
                             </div>}
-                        </div>
+                            </div>
+                        
                     </div>
                 </div>
             </div>
