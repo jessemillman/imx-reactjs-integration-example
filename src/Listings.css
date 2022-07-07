@@ -80,6 +80,8 @@
 
   .sub-container{
     margin-left: 25px;
+    display: flex;
+    align-items: baseline;
   }
 
   .buy-now-btn{
