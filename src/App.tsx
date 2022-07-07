@@ -49,11 +49,12 @@ const App = () => {
   // register and/or setup a user
   async function linkSetup(): Promise<void> {
     // console.log('APP COMPONENT')
-    // const res = await link.setup({providerPreference:ProviderPreference.NONE})
-    const res = await link.setup({})
+    const res = await link.setup({providerPreference:ProviderPreference.NONE})
+    // const res = await link.setup({})
   
     setWallet(res.address)
     const balnaceresponce = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
+    console.log('balnaceresponce',balnaceresponce)
     setBalance(balnaceresponce['data'])
 
     const syncStateObservable = await link.syncState({})
