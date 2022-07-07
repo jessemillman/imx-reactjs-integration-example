@@ -18,7 +18,7 @@ const State = ({ client, link, wallet, stateDetails }: StateProps) => {
             <div className='mint-div'>
                 <div className='inline-mint'>
                     <div>
-                        <div>
+                        <div className='state-h3'>
                             <h3 style={{ 'marginLeft': '21px' }}>State Details</h3>
                         </div>
                         {

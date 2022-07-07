@@ -18,19 +18,28 @@ type LocationState = {
     }
 }
 
-const AssetDetails = ({ client, link, wallet,sigin, details }: AsserProps) => {
+const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [clickedBtnValue, setClickedValue] = useState('Transfer');
 
     const { pageName, id } = useParams();
 
     async function buyNFT() {
         await link.buy({
-          orderIds:[details.order_id.toString()]
+            orderIds: [details.order_id.toString()]
         })
-      };
+    };
+
+    const commonClick = (value: any) => {
+        if (value) {
+            setShow(true)
+            setClickedValue(value);
+        }
+
+    }
 
     return (<>
         <div className='mint-div asset'>
@@ -42,10 +51,10 @@ const AssetDetails = ({ client, link, wallet,sigin, details }: AsserProps) => {
                     </div>
                     <div className="detail-section">
                         <div className='sub-container'>
-                           
+
                             <img className='avatar-img'
                                 src={pageName === "listing" ? details['sell']['data']['properties']['collection']['icon_url'] : details['collection'].icon_url} alt="" />
-                        
+
                             <span className='text-spn'>{pageName === "listing" ? details['sell']['data']['properties']['collection']['name'] : details['collection'].name}</span>
                         </div>
                         <div>
@@ -60,17 +69,16 @@ const AssetDetails = ({ client, link, wallet,sigin, details }: AsserProps) => {
                                 <i className='fab fa-ethereum'></i>
                                 <span className="eth-amount">0.14105<span className="usd-amount">($165.28 USD)</span></span>
                             </div>
-                            {pageName === "listing" ? <button onClick={() => {(wallet && wallet !== "undefined")?buyNFT():sigin()}} className="invent-btns btn-position buy-now-button">Buy</button> : <div className="btn-style ">
-                                <button onClick={() => setShow(true)} className="invent-btns btn-position">transfer</button>
-                                <button onClick={() => setShow(true)} className="invent-btns btn-position">Sale</button>
+                            {pageName === "listing" ? <button onClick={() => { (wallet && wallet !== "undefined") ? buyNFT() : sigin() }} className="invent-btns btn-position buy-now-button">Buy</button> : <div className="btn-style ">
+                                <button onClick={() => commonClick('Transfer')} className="invent-btns btn-position">Transfer</button>
+                                <button onClick={() => commonClick('Sale')} className="invent-btns btn-position">Sell</button>
                             </div>}
-                            </div>
-                        
+                        </div>
                     </div>
                 </div>
             </div>
+            <CommonPopup show={show} handleClose={handleClose} headerName={clickedBtnValue} ClickedButton={clickedBtnValue} />
         </div>
-        <CommonPopup show={show} handleClose={handleClose} />
     </>
 
     )

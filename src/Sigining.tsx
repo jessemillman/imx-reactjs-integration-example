@@ -39,16 +39,16 @@ const Signing = ({ client, link, wallet }: SigningProps) => {
                            User Name */}
                                 <input type="text" className='sigin-field' placeholder='Input Message' value={signin} onChange={e => setSignin(e.target.value)} />
                                 {/* </label> */}
-                                <button className='invent-btns' onClick={sigin}>Signing</button>
+                                <button className='invent-btns cust-position' onClick={sigin}>Signing</button>
 
                             </div>
                         </div>
 
                         <div>
                             <div className='theader-signin'>
-                                <h3 style={{ 'marginLeft': '21px' }}>Response </h3>
+                                <h3 style={{ 'marginLeft': '2px' }}>Response </h3>
                             </div>
-                            <textarea disabled={true} className='text-area' rows={5} cols={5} value={Response}></textarea>
+                            <textarea disabled={true} className='text-area' rows={4} cols={4} value={Response}></textarea>
 
                         </div>
                     </div>

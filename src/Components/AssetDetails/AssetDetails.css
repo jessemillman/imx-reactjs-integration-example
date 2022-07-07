@@ -7,6 +7,7 @@
     border: 1px solid #c8c8c8;
     border-radius: 11px;
     margin-right: 40px;
+    padding: 17px;
 }
 
 .img-section img {
@@ -21,7 +22,6 @@
 .action-section {
     border: 1px solid #f4f3f3;
     padding: 20px;
-    text-align: center;
     border-radius: 1em;
     background: #f4f3f3;
     margin-top: 20px;
@@ -89,7 +89,7 @@
     margin-left: 8px;
     color: rgb(99 93 93);
     font-weight: 400;
-    margin-top: 12px;
+    bottom: unset;
 }
 
 .asset h1{
@@ -109,13 +109,14 @@
 }
 
 .amount {
-    float: left;
+    /* float: left; */
 
 }
 
 .btn-style {
     display: grid;
     grid-template-columns: 0.3fr 0.3fr;
+    grid-column-gap: 11px;
     column-gap: 11px;
     margin-top: 10px;
 }
@@ -126,5 +127,5 @@
 }
 
 .asset-img{
-
+    place-content: center;
 }

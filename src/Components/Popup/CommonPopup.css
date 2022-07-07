@@ -1,0 +1,23 @@
+.inline-body-content{
+    display: grid;
+    grid-template-columns: 0.3fr 0.3fr;
+    column-gap: 29px;
+    padding: 5px;
+    place-content: center;
+}
+
+.modal-content{
+    background-color: #ded7d7 !important;
+}
+
+.modal-header{
+    padding: 0.8rem !important;
+}
+
+.modal-footer{
+    /* padding: unset !important; */
+}
+
+/* .invent-btns{
+    margin-top: unset;
+} */
