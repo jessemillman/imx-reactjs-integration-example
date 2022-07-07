@@ -8,15 +8,15 @@ import { useNavigate } from 'react-router-dom';
 interface InventoryProps {
   wallet: string,
   link: Link,
-  selectedOrderId:string,
-  setSelectedOrderId:any,
-  sigin: () => any;
+  selectedOrderId: string,
+  setSelectedOrderId: any,
+  sigin: () => any,
+  setAssets?:any,
 }
-const Listings = ({ wallet,link,selectedOrderId,setSelectedOrderId, sigin }: InventoryProps) => {
+const Listings = ({ wallet, link, selectedOrderId, setSelectedOrderId, sigin, setAssets }: InventoryProps) => {
 
   const [userdata, setUserData] = useState([]);
   const [buttonname, setButtonName] = useState('Gods Unchained');
-
   const navigate = useNavigate()
   const buttonClick = (e: any) => {
     setButtonName(e.target.innerText)
@@ -52,7 +52,9 @@ const Listings = ({ wallet,link,selectedOrderId,setSelectedOrderId, sigin }: Inv
               return (
                 <div key={key}
                   className={`cards ${user?.order_id.toString() === selectedOrderId && `cards-selected`}`}
-                  onClick={() => setSelectedOrderId(selectedOrderId!==user?.order_id.toString()?user?.order_id.toString():'')}>
+                  onClick={() => {setAssets(user); navigate(`/listing/assets/${user?.order_id}`) }}>
+
+                  {/* //setSelectedOrderId(selectedOrderId!==user?.order_id.toString()?user?.order_id.toString():'')}> */}
                   <div className='img-div'>
                     <img src={user['sell']['data']['properties']['image_url']} alt="" />
                   </div>
