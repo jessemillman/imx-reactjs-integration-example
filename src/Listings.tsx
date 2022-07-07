@@ -69,11 +69,11 @@ const Listings = ({ wallet, link, selectedOrderId, setSelectedOrderId, sigin, se
             })
           }
         </div>
-        <button className='buy-now-btn'
+        {/* <button className='buy-now-btn'
           disabled={selectedOrderId ? false : true}
           onClick={() => { (wallet && wallet !== "undefined") ? navigate("/marketplace") : sigin() }}>
           Buy Now
-        </button>
+        </button> */}
       </div>
     </>
   )

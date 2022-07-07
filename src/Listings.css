@@ -5,10 +5,17 @@
     align-items: center;
   }
 
+  .top-header h3{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0px;
+  }
+
   .inline-div {
     background-color: white;
     border: 1px solid white;
     border-radius: 1em;
+    padding: 36px 0px;
   }
   
   .cards {

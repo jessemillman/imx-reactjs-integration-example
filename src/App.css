@@ -23,6 +23,7 @@
   min-width: 20em;
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
   /* grid-template-columns: 0fr 1fr; */
 }
 
@@ -30,20 +31,20 @@
   color: white;
   font-weight: 600;
   width: 8em;
-  padding: 0px 1em;
+  margin-top: 40px;
+  margin-bottom: 24px;
   padding-bottom: unset;
-  font-size: 44px;
+  font-size: 40px;
 }
 
 .header-btn {
-  margin-left: 2.5em;
   position: relative;
   bottom: 12px;
 }
 
 .header-btn .button1 {
   border-radius: 2em;
-  padding: 12px 30px;
+  padding:8px 27px;
   background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
   font-weight: 600;
 }
@@ -60,7 +61,7 @@
 
 .header-btn .button2 {
   border-radius: 2em;
-  padding: 10px 28px;
+  padding: 8px 24px;
   background: transparent;
   border: 2px solid #fff;
   color: #fff;
@@ -80,7 +81,7 @@
   background-size: cover;
   display: grid;
   grid-template-columns: 0fr 1fr 3fr;
-  height: 17em;
+  height: 16em;
 }
 
 
@@ -90,7 +91,8 @@
   width: 11em;
   border-radius: 2em;
   color: #7d52e0;
-  padding: 7px 12px;
+  font-size: 14px;
+  padding: 5px 10px;
   border: none;
   font-weight: 600 !important;
   cursor: pointer;
@@ -114,7 +116,7 @@ align-items: center;
   /* width: 100%;
   height: 100%; */
   padding: 2.7em;
-  height: 52vh;
+  height: 66vh;
   overflow-y: scroll;
   position: relative;
 }
@@ -136,7 +138,12 @@ align-items: center;
 }
 
 .header-text-div {
-  margin-left: 10px;
+  margin-left: 42px;
+  margin-right: 13px
+}
+
+button{
+  outline: none;
 }
 
 

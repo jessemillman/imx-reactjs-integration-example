@@ -2,15 +2,17 @@ import { ethers } from 'ethers';
 import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType } from '@imtbl/imx-sdk';
 import { getConfig, AssetsApi, ListAssetsResponse } from '@imtbl/core-sdk';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Inventory.css';
 require('dotenv').config();
 interface InventoryProps {
   client: ImmutableXClient,
   link: Link,
   wallet: string,
+  setAssets?: any,
 }
 
-const Inventory = ({ client, link, wallet }: InventoryProps) => {
+const Inventory = ({ client, link, wallet, setAssets }: InventoryProps) => {
   const [inventory, setInventory] = useState<ListAssetsResponse>(Object);
   // minting
   const [mintTokenId, setMintTokenId] = useState('');
@@ -26,7 +28,7 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
   const networkType: any = process.env.REACT_APP_NETWORK_TYPE
   const config = getConfig(networkType);
   const assetApi = new AssetsApi(config.api);
-
+  const navigate = useNavigate()
   useEffect(() => {
     load()
   }, [])
@@ -250,11 +252,12 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
           <div className='theader-mint'>
             <h4 style={{ 'marginLeft': '21px' }}>Inventory:</h4>
           </div>
-          <div className='inline-div'>
-            <div className='card-split-invent'>
+          <div className='inline-div'   >
+            <div className='card-split-invent' >
               {inventory?.result?.map((val: any, i: any) => {
                 return val['image_url'] != null ? (
-                  <div key={i} className='cards'>
+                  // console.log(val),
+                  <div key={i} className='cards' onClick={() => { setAssets(val); navigate(`/inventory/assets/${val.id}`) }} >
                     <img src={val?.image_url ?? ""} alt="profile" />
                     <p>{val?.name}</p>
                     <div>
@@ -262,7 +265,7 @@ const Inventory = ({ client, link, wallet }: InventoryProps) => {
                     </div>
                   </div>
                 ) : <div className='not-image'>
-                      <div className='sub-img'>Image Not available</div>
+                  <div className='sub-img'>Image Not available</div>
                 </div>
 
 

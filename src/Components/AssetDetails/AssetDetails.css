@@ -64,6 +64,7 @@
     display: inline;
 }
 
+
 .asset .sub-container{
     margin-left: 0px;
 }
@@ -97,4 +98,16 @@
     height: 50px;
     font-size: 18px;
     border-radius: 8px;
+}
+
+.amount {
+    float: left;
+
+}
+
+.btn-style {
+    display: grid;
+    grid-template-columns: 0.3fr 0.3fr;
+    column-gap: 11px;
+    margin-top: 10px;
 }
