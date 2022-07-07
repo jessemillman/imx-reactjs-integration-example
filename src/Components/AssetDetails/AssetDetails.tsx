@@ -21,7 +21,7 @@ const AssetDetails = ({ client, link, wallet, details }: AsserProps) => {
      const {pageName, id} = useParams();
     return (
         console.log(details,pageName,id),
-        <div className='mint-div'>
+        <div className='mint-div asset'>
             <div className='inline-mint'>
                 <div className="main-asset">
                     <div className="img-section">
@@ -36,16 +36,16 @@ const AssetDetails = ({ client, link, wallet, details }: AsserProps) => {
                         </div>
                         <div>
                             <h1>{pageName==="listing"?details['sell']['data']['properties']['name']:'Inventory-section'}</h1>
-                            <span className='own-label'>Owned by </span><span className='eth-amount'>{pageName==="listing"?`${details?.user?.slice(0, 8)}...${details?.user?.slice(-4)}`:`Inventory-section`}</span>
+                            <div className="own-div"><span className='own-label'>Owned by </span><span className='eth-amount'>{pageName==="listing"?`${details?.user?.slice(0, 8)}...${details?.user?.slice(-4)}`:`Inventory-section`}</span></div>
                         </div>
 
                         <div className='btn-section'>
                             <div>
-                                <i className='fab fa-ethereum'></i><span>0.14105($165.28 USD)</span>
+                                <i className='fab fa-ethereum'></i><span className="eth-amount">0.14105<span className="usd-amount">($165.28 USD)</span></span>
                             </div>
 
 
-                            {pageName==="listing"?<button onClick={ ()=>clickFn()}className="invent-btns btn-position">Buy</button>:<div>Inventory-section</div>}
+                            {pageName==="listing"?<button onClick={ ()=>clickFn()}className="invent-btns btn-position buy-now-btn">Buy</button>:<div>Inventory-section</div>}
 
                         </div>
                     </div>

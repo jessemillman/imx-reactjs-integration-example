@@ -25,6 +25,27 @@
     margin-top: 10px;
 }
 
+.btn-section .fa-ethereum{
+    font-size: 18px;
+    margin-left: 0px;
+    margin-right: 4px;
+}
+
+.amount-section{
+    display: flex;
+    align-items: center;
+}
+
+.btn-section .eth-amount{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.btn-section .usd-amount{
+    font-size: 16px;
+    font-weight: 400;
+}
+
 .own-label {
     font-size: 16px;
     font-weight: 400;
@@ -41,4 +62,39 @@
     font-style: normal;
     color: rgb(61 58 58);
     display: inline;
+}
+
+.asset .sub-container{
+    margin-left: 0px;
+}
+
+.asset .sub-container img{
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgb(76, 80, 93);
+}
+
+.asset .sub-container .text-spn{
+    font-size: 16px;
+    margin-left: 8px;
+    color: rgb(99 93 93);
+    font-weight: 400;
+}
+
+.asset h1{
+    font-size: 32px;
+    font-weight: 700;
+    margin: 15px 0px;
+}
+.own-div{
+    margin-bottom: 13px;
+}
+
+.buy-now-btn{
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 8px;
 }
