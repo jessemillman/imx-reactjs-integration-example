@@ -90,6 +90,10 @@
     /* text-align: center; */
 }
 
+.inventory-section .cards p{
+    margin-left: 0px;
+}
+
 
 .signin-input-controls {
     display: grid;
