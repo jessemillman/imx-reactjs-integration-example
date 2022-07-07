@@ -20,8 +20,11 @@
     border-radius: 2em;
 }
 
-.inline-mint h4{
-/* margin-top: 0px; */
+.inline-mint h4 {
+    /* margin-top: 0px; */
+    margin-top: 0px;
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .inline-controls {
@@ -29,6 +32,7 @@
     grid-template-columns: 0.2fr 0.2fr 0.2fr;
     margin-left: 20px;
     align-items: center;
+    column-gap: 20px;
 }
 
 .asset {
@@ -44,18 +48,28 @@
     border-radius: 2em;
     font-weight: bold;
     width: 10em;
-    padding: 8px;
+    /* padding: 8px; */
     background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
     cursor: pointer;
     border: none;
-    margin-top: 1.7em;
+    margin-top: 0.8em;
+}
+
+.theader-signin h3{
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.cust-position{
+    margin-top: 1.5em;
 }
 
 .input-field {
-    height: 24px;
+    height: 30px;
     border-radius: 0.4em;
     border: 1px solid #393636e3;
     margin-top: 10px;
+    margin-bottom: 9px;
 
 }
 
@@ -66,6 +80,7 @@
 
 .complete-btn {
     margin-top: unset;
+    margin-bottom: 13px;
 }
 
 .not-image {
@@ -90,7 +105,7 @@
     /* text-align: center; */
 }
 
-.inventory-section .cards p{
+.inventory-section .cards p {
     margin-left: 0px;
 }
 
@@ -112,17 +127,20 @@
     margin-right: 11px;
 }
 
-.text-area{
-    margin-left: 1.8em;
+.text-area {
+    /* margin-left: 1.8em; */
     width: 35em;
+    font-size: 14px;
+    line-height: unset
 }
 
-.sigin-div{
+.sigin-div {
     display: grid;
     grid-template-columns: 0.8fr 0.8fr;
+    column-gap: 12px;
 }
 
-.State-details{
+.State-details {
     display: grid;
     grid-template-columns: 0.4fr 0.1fr 0fr;
     margin-left: 2em;
@@ -130,7 +148,12 @@
     margin-top: 27px;
 }
 
-.state-value{
+.state-value {
     font-weight: 600;
-    
+
+}
+
+.state-h3 h3{
+    font-size: 19px;
+    font-weight: 600;
 }
