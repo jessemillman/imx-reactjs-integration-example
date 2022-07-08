@@ -29,7 +29,7 @@ li span {
     font-weight: 500;
 }
 
-button:focus{
+button:focus {
     outline: none;
 }
 
@@ -55,41 +55,41 @@ button:focus{
 
 .main-sidebar {
     padding: 15px;
-   min-width: 236px;
+    min-width: 236px;
 }
 
-.sidebar-options{
+.sidebar-options {
     list-style-type: none;
     margin-top: 62px;
     border-top: 1px solid #686565;
 }
 
-.sidebar-options i{
+.sidebar-options i {
     margin-right: 1em;
-    color:#fff;
+    color: #fff;
 }
 
-.bal-btn-text{
+.bal-btn-text {
     font-weight: 600;
     font-size: 12px;
 }
 
-.bal-btn .fa-plus-circle{
-    color:blue
+.bal-btn .fa-plus-circle {
+    color: blue
 }
 
-.eth-div{
-    text-align:center;
-    color:#fff;
+.eth-div {
+    text-align: center;
+    color: #fff;
     font-size: 11px;
     margin: 6px 0px;
 }
 
-.eth-div .fa-ethereum{
-    color:rgb(0, 0, 0);
+.eth-div .fa-ethereum {
+    color: rgb(0, 0, 0);
 }
 
-.eth-icon{
+.eth-icon {
     background: #fff;
     font-size: 9px;
     padding: 2px 5px;
@@ -97,27 +97,31 @@ button:focus{
     margin-right: 5px;
 }
 
-.main-sidebar .hamburger-div{
+.main-sidebar .hamburger-div {
     justify-content: end;
 }
 
-.main-sidebar .hamburger-div svg{
-   margin-left:auto;
-} 
-.sidebar-options li{
+.main-sidebar .hamburger-div svg {
+    margin-left: auto;
+}
+
+.sidebar-options li {
     margin: 11px 0px;
     padding: 3px 0px;
 }
 
-.sidebar-options .active-tab i,.sidebar-options .active-tab span{
-    color:#989898;
+.sidebar-options .active-tab i,
+.sidebar-options .active-tab span {
+    color: #989898;
 }
 
-.sidebar-options .tab i:hover,.sidebar-options .tab span:hover{
+.sidebar-options .tab i:hover,
+.sidebar-options .tab span:hover {
     opacity: .75;
     color: #989898;
 }
-.pointer{
+
+.pointer {
     cursor: pointer;
 }
 
@@ -129,18 +133,18 @@ button:focus{
     cursor: pointer;
 }
 
-.sigin-btn{
+.sigin-btn {
     margin-top: 48px;
     margin-left: 4px;
     display: inline-block;
     position: relative;
 }
 
-.address-text{
+.address-text {
     position: relative;
 }
 
-.address-text::before{
+.address-text::before {
     background: rgb(5 189 7);
     padding: 4px;
     position: absolute;
@@ -150,13 +154,13 @@ button:focus{
     content: "";
 }
 
-.address-text .fa-angle-down{
+.address-text .fa-angle-down {
     position: absolute;
     right: 14px;
     top: 14px;
 }
 
-.addressDropdown{
+.addressDropdown {
     position: absolute;
     background: #333131;
     width: 175px;
@@ -164,10 +168,17 @@ button:focus{
     border-radius: 6px;
 }
 
-.disconnect-wallet{
+.disconnect-wallet {
     font-weight: 500;
     font-size: 14px;
     color: rgb(208 53 71);
     text-align: center;
     padding: 9px 0px;
+}
+
+@media (max-width:800px) {
+    .main-sidebar {
+        height: 51em;
+    }
+
 }
