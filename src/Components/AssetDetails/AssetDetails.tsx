@@ -57,9 +57,9 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
             console.log(response)
         } else if (input.screenName == 'Sell') {
             const inputdata = {
-                tokenId: input.amount,
+                tokenId:  input.amount,
                 tokenAddress: '0x2ca7e3fa937cae708c32bc2713c20740f3c4fc3b',
-                currencyAddress: '0x4c04c39fb6d2b356ae8b06c47843576e32a1963e',
+                // currencyAddress: '0x4c04c39fb6d2b356ae8b06c47843576e32a1963e',
             }
             const response = await link.sell(inputdata)
         }
