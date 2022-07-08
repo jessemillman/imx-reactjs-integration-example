@@ -135,7 +135,9 @@ const Inventory = ({ client, link, wallet, setAssets }: InventoryProps) => {
   };
 
   return (
+   
     <div className='mint-div'>
+       {console.log(JSON.stringify(inventory))},
       <div className='inline-mint'>
         
         <div className='theader-mint'>

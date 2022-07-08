@@ -26,7 +26,7 @@ const Minting = ({ client, link, wallet, setAssets }: MintProps) => {
     }
     // the minting function should be on your backend
     async function mint() {
-
+        // ethers.utils.parseUnits(23.435, 18)
         /**
         //if you want to mint on a back end server you can also provide the private key of your wallet directly to the minter. 
         //Please note: you should never share your private key and so ensure this is only done on a server that is not accessible from the internet

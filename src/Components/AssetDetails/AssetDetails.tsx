@@ -94,7 +94,9 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                         <div className="action-section">
                             <div className="amount-section">
                                 <i className='fab fa-ethereum'></i>
-                                <span className="eth-amount">0.14105<span className="usd-amount">($165.28 USD)</span></span>
+                                <span className="eth-amount">{pageName === "listing" ? details['buy']['data']['quantity'] : '0.14105'}</span>
+
+                                {/* <span className="usd-amount">($165.28 USD)</span> */}
                             </div>
                             {pageName === "listing" ? <button onClick={() => { (wallet && wallet !== "undefined") ? buyNFT() : sigin() }} className="invent-btns btn-position buy-now-button">Buy</button> : <div className="btn-style ">
                                 <button onClick={() => commonClick('Transfer')} className="invent-btns btn-position">Transfer</button>
