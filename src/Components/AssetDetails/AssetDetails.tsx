@@ -41,6 +41,14 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
 
     }
 
+    const actionClick = (input:any) => {
+        setShow(false)
+        console.log(input)
+        // link.transfer({
+
+        // })
+    }
+
     return (<>
         <div className='mint-div asset'>
             <div className='inline-mint'>
@@ -71,13 +79,13 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                             </div>
                             {pageName === "listing" ? <button onClick={() => { (wallet && wallet !== "undefined") ? buyNFT() : sigin() }} className="invent-btns btn-position buy-now-button">Buy</button> : <div className="btn-style ">
                                 <button onClick={() => commonClick('Transfer')} className="invent-btns btn-position">Transfer</button>
-                                <button onClick={() => commonClick('Sale')} className="invent-btns btn-position">Sell</button>
+                                <button onClick={() => commonClick('Sell')} className="invent-btns btn-position">Sell</button>
                             </div>}
                         </div>
                     </div>
                 </div>
             </div>
-            <CommonPopup show={show} handleClose={handleClose} headerName={clickedBtnValue} ClickedButton={clickedBtnValue} />
+            <CommonPopup show={show} handleClose={handleClose} headerName={clickedBtnValue} ClickedButton={clickedBtnValue} performFuction={actionClick} />
         </div>
     </>
 

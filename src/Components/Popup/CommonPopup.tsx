@@ -9,8 +9,9 @@ interface PopupProps {
     handleClose: () => any,
     headerName: any,
     ClickedButton: any,
+    performFuction: (input:string) => any
 }
-const CommonPopup = ({ show, handleClose, headerName, ClickedButton }: PopupProps) => {
+const CommonPopup = ({ show, handleClose, headerName, ClickedButton, performFuction }: PopupProps) => {
 
     const [amount, setAmount] = useState('');
     const [toaddress, setToAddress] = useState('');
@@ -26,18 +27,18 @@ const CommonPopup = ({ show, handleClose, headerName, ClickedButton }: PopupProp
                         {ClickedButton == 'Transfer' ?
                             <>
                                 < label >
-                                    Amount:
+                                    Transfer Amount:
                                     <input type="text" className='input-field' value={amount} onChange={e => setAmount(e.target.value)} />
                                 </label>
                                 <label>
-                                    To Wallet:
+                                    To Wallet Address:
                                     <input type="text" className='input-field' value={toaddress} onChange={e => setToAddress(e.target.value)} />
                                 </label>
 
                             </> :
                             <>
                                 <label>
-                                    Sale Amount:
+                                    Sell Amount:
                                     <input type="text" className='input-field' value={amount} onChange={e => setAmount(e.target.value)} />
                                 </label>
                                 <label>
@@ -53,18 +54,10 @@ const CommonPopup = ({ show, handleClose, headerName, ClickedButton }: PopupProp
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    {ClickedButton == 'Transfer' ?
                         <>
                             <button className='invent-btns' onClick={handleClose}>Close</button>
-                            <button className='invent-btns' onClick={handleClose}>Transfer</button>
+                            <button className='invent-btns' onClick={(a)=>performFuction( ClickedButton == 'Transfer'? 'Transfer' : 'Sell')}>{ClickedButton == 'Transfer'? 'Transfer' : 'Sell'}</button>
                         </>
-                        :
-                        <>
-                            <button className='invent-btns' onClick={handleClose}>Close</button>
-                            <button className='invent-btns' onClick={handleClose}>Sale</button>
-                        </>
-
-                    }
 
                 </Modal.Footer>
             </Modal>
