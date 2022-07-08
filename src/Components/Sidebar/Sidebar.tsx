@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"
 import immuLogo from '../../assets/logo.svg';
 import useOnclickOutside from "react-cool-onclickoutside";
+import { ethers } from 'ethers';
 import './Sidebar.css';
 interface Props {
     setbalanceValue: any,
@@ -16,7 +17,7 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
     const [addressDropdown, setAddressDropdown] = useState(false);
     let navigate = useNavigate()
     const location = useLocation();
-
+    // const balance = ethers.utils.parseEther(setbalanceValue?.balance);
     useEffect(() => {
         setSidebarTab(location?.pathname?.split("/")[1])
     }, [location?.pathname])
@@ -25,6 +26,8 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
     const dropDownuterClick = useOnclickOutside(() => {
         setAddressDropdown(false);
     });
+
+
 
 
     const sidebarConfig = [
@@ -70,6 +73,7 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
 
 
 
+
     return (
         <div className="main-sidebar">
             <div className='hamburger-div'>
@@ -104,9 +108,9 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
                     sidebarConfig.map((menu, ind) => {
                         return (
                             <li key={ind} className={`${menu.Link.includes(sidebarTab) ? "active-tab" : "tab"}   pointer`}
-                            // ${(!address || address === "undefined") && "active-tab"}
-                                onClick={() => {  navigate(menu.Link) }}>
-                                    {/* (address && address !== "undefined") && */}
+                                // ${(!address || address === "undefined") && "active-tab"}
+                                onClick={() => { navigate(menu.Link) }}>
+                                {/* (address && address !== "undefined") && */}
                                 <i className={menu.icon} aria-hidden="true"></i>
                                 <span>{menu.LabelName}</span>
                             </li>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import './AssetDetails.css'
 import CommonPopup from '../../Components/Popup/CommonPopup';
 import { useNavigate } from 'react-router-dom';
-
+import { ethers } from 'ethers';
 interface AsserProps {
     client: ImmutableXClient,
     link: Link,
@@ -20,6 +20,7 @@ type LocationState = {
 }
 
 const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
+    
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -68,7 +69,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
     }
 
     return (<>
-        {console.log(JSON.stringify(details))},
+        {console.log(details)},
         <div className='mint-div asset'>
             <div className='inline-mint'>
                 <div className="main-asset">
@@ -94,7 +95,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                         <div className="action-section">
                             <div className="amount-section">
                                 <i className='fab fa-ethereum'></i>
-                                <span className="eth-amount">{pageName === "listing" ? details['buy']['data']['quantity'] : '0.14105'}</span>
+                                <span className="eth-amount">{pageName === "listing" ? ethers.utils.formatUnits(details['buy']['data']['quantity'],details['buy']['data']['decimals']) : '0.14105'}</span>
 
                                 {/* <span className="usd-amount">($165.28 USD)</span> */}
                             </div>
