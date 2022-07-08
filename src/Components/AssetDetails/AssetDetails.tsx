@@ -20,7 +20,7 @@ type LocationState = {
 }
 
 const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
-    
+
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -57,7 +57,8 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
             console.log(response)
         } else if (input.screenName == 'Sell') {
             const inputdata = {
-                tokenId:  input.amount,
+                tokenId:'123',
+                amount: input.amount,
                 tokenAddress: '0x2ca7e3fa937cae708c32bc2713c20740f3c4fc3b',
                 // currencyAddress: '0x4c04c39fb6d2b356ae8b06c47843576e32a1963e',
             }
@@ -95,7 +96,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                         <div className="action-section">
                             <div className="amount-section">
                                 <i className='fab fa-ethereum'></i>
-                                <span className="eth-amount">{pageName === "listing" ? ethers.utils.formatUnits(details['buy']['data']['quantity'],details['buy']['data']['decimals']) : '0.14105'}</span>
+                                <span className="eth-amount">{pageName === "listing" ? ethers.utils.formatUnits(details['buy']['data']['quantity'], details['buy']['data']['decimals']) : '0.14105'}</span>
 
                                 {/* <span className="usd-amount">($165.28 USD)</span> */}
                             </div>
