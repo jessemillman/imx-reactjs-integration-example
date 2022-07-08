@@ -10,6 +10,7 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import getRoutes from './Router';
 import ConnectWalletSection from './Components/ConnectWalletSection/ConnectWalletSection';
 import State from './State';
+import { ethers } from 'ethers';
 require('dotenv').config();
 
 
@@ -54,8 +55,9 @@ const App = () => {
     // const res = await link.setup({})
 
     setWallet(res.address)
-    const balnaceresponce = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
+    const balnaceresponce:any = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
     console.log('balnaceresponce', balnaceresponce)
+    balnaceresponce['data']['balance'] =  ethers.utils.formatUnits(balnaceresponce['data']['balance'],18);
     setBalance(balnaceresponce['data'])
 
     const syncStateObservable = await link.syncState({})
