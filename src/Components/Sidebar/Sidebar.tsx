@@ -39,6 +39,11 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
             icon: "fa fa-user"
         },
         {
+            LabelName: 'Mint',
+            Link: '/minting',
+            icon: "fa fa-plus"
+        },
+        {
             LabelName: 'Signing',
             Link: '/signing',
             icon: "far fa-edit"

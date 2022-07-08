@@ -9,12 +9,27 @@ interface PopupProps {
     handleClose: () => any,
     headerName: any,
     ClickedButton: any,
-    performFuction: (input:string) => any
+    performFuction: (input: string) => any
 }
 const CommonPopup = ({ show, handleClose, headerName, ClickedButton, performFuction }: PopupProps) => {
 
     const [amount, setAmount] = useState('');
     const [toaddress, setToAddress] = useState('');
+
+    const getValue = () => {
+        const dataObj: any = {
+        }
+        if (ClickedButton == 'Transfer') {
+            dataObj['screenName'] = 'Transfer';
+            dataObj['Address'] = toaddress;
+            return performFuction(dataObj)
+        } else {
+            dataObj['screenName'] = 'Sell';
+            dataObj['amount'] = amount;
+            return performFuction(dataObj)
+        }
+
+    }
 
     return (
         <>
@@ -26,26 +41,17 @@ const CommonPopup = ({ show, handleClose, headerName, ClickedButton, performFuct
                     <div className='inline-body-content'>
                         {ClickedButton == 'Transfer' ?
                             <>
-                                < label >
-                                    Transfer Amount:
-                                    <input type="text" className='input-field' value={amount} onChange={e => setAmount(e.target.value)} />
-                                </label>
                                 <label>
                                     To Wallet Address:
-                                    <input type="text" className='input-field' value={toaddress} onChange={e => setToAddress(e.target.value)} />
+                                    <input type="text" className='input-field set-width' value={toaddress} onChange={e => setToAddress(e.target.value)} />
                                 </label>
 
                             </> :
                             <>
                                 <label>
                                     Sell Amount:
-                                    <input type="text" className='input-field' value={amount} onChange={e => setAmount(e.target.value)} />
+                                    <input type="text" className='input-field set-width' value={amount} onChange={e => setAmount(e.target.value)} />
                                 </label>
-                                <label>
-                                    To Wallet Address:
-                                    <input type="text" className='input-field' value={toaddress} onChange={e => setToAddress(e.target.value)} />
-                                </label>
-
                             </>
 
                         }
@@ -54,10 +60,10 @@ const CommonPopup = ({ show, handleClose, headerName, ClickedButton, performFuct
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                        <>
-                            <button className='invent-btns' onClick={handleClose}>Close</button>
-                            <button className='invent-btns' onClick={(a)=>performFuction( ClickedButton == 'Transfer'? 'Transfer' : 'Sell')}>{ClickedButton == 'Transfer'? 'Transfer' : 'Sell'}</button>
-                        </>
+                    <>
+                        <button className='invent-btns' onClick={handleClose}>Close</button>
+                        <button className='invent-btns' onClick={(a) => getValue()}>{ClickedButton == 'Transfer' ? 'Transfer' : 'Sell'}</button>
+                    </>
 
                 </Modal.Footer>
             </Modal>

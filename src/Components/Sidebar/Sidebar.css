@@ -106,7 +106,7 @@ button:focus{
 } 
 .sidebar-options li{
     margin: 11px 0px;
-    padding: 6px 0px;
+    padding: 3px 0px;
 }
 
 .sidebar-options .active-tab i,.sidebar-options .active-tab span{

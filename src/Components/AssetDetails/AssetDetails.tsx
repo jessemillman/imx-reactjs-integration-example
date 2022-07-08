@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType, ETHTokenType } from '@imtbl/imx-sdk';
 import { useState } from "react";
 import './AssetDetails.css'
 import CommonPopup from '../../Components/Popup/CommonPopup';
+import { useNavigate } from 'react-router-dom';
 
 interface AsserProps {
     client: ImmutableXClient,
@@ -19,7 +20,7 @@ type LocationState = {
 }
 
 const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
-
+    const navigate = useNavigate()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -41,15 +42,33 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
 
     }
 
-    const actionClick = (input:any) => {
+    const actionClick = async (input: any) => {
         setShow(false)
         console.log(input)
-        // link.transfer({
 
-        // })
+        if (input.screenName == 'Transfer') {
+            const inputdata = {
+                amount: '0.23',
+                type: ETHTokenType.ETH,
+                toAddress: input.Address,
+            }
+            const response = await link.transfer([inputdata])
+            console.log(response)
+        } else if (input.screenName == 'Sell') {
+            const inputdata = {
+                tokenId: input.amount,
+                tokenAddress: '0x2ca7e3fa937cae708c32bc2713c20740f3c4fc3b',
+                currencyAddress: '0x4c04c39fb6d2b356ae8b06c47843576e32a1963e',
+            }
+            const response = await link.sell(inputdata)
+        }
+
+        navigate('/inventory');
+
     }
 
     return (<>
+        {console.log(JSON.stringify(details))},
         <div className='mint-div asset'>
             <div className='inline-mint'>
                 <div className="main-asset">
