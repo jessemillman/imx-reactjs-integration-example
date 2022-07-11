@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType, ETHTokenType } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType, ETHTokenType, ERC20TokenType } from '@imtbl/imx-sdk';
 import { useState } from "react";
 import './AssetDetails.css'
 import CommonPopup from '../../Components/Popup/CommonPopup';
@@ -26,7 +26,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [clickedBtnValue, setClickedValue] = useState('Transfer');
-
+    const [transferRes, setTransferRes] = useState<any>(Object);
     const { pageName, id } = useParams();
 
     async function buyNFT() {
@@ -49,28 +49,33 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
 
         if (input.screenName == 'Transfer') {
             const inputdata = {
-                amount: '0.23',
+                amount: ethers.utils.formatUnits(details?.orders?.sell_orders[0]?.buy_quantity, details?.orders?.sell_orders[0]?.buy_decimals),
                 type: ETHTokenType.ETH,
+                tokenAddress: details?.token_address,
                 toAddress: input.Address,
             }
+
             const response = await link.transfer([inputdata])
+            setTransferRes(response?.result[0]?.status === "success" ? response?.result[0]?.status : {})
             console.log(response)
         } else if (input.screenName == 'Sell') {
             const inputdata = {
-                tokenId:'123',
+                tokenId: details?.token_id,
                 amount: input.amount,
-                tokenAddress: '0x2ca7e3fa937cae708c32bc2713c20740f3c4fc3b',
+                tokenAddress: details?.token_address
+                // tokenAddress: '0x2ca7e3fa937cae708c32bc2713c20740f3c4fc3b',
                 // currencyAddress: '0x4c04c39fb6d2b356ae8b06c47843576e32a1963e',
             }
             const response = await link.sell(inputdata)
+            console.log(response)
         }
 
-        navigate('/inventory');
+        //navigate('/inventory');
 
     }
 
     return (<>
-        {console.log(details)},
+        {console.log(details)}
         <div className='mint-div asset'>
             <div className='inline-mint'>
                 <div className="main-asset">
@@ -93,10 +98,10 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                                 <span className='eth-amount'>{details?.user?.slice(0, 8)}...{details?.user?.slice(-4)}</span>
                             </div>
                         </div>
-                        <div className="action-section">
+                        {(details?.orders?.sell_orders[0]?.buy_quantity || details?.buy?.data?.quantity) ? <div className="action-section">
                             <div className="amount-section">
                                 <i className='fab fa-ethereum'></i>
-                                <span className="eth-amount">{pageName === "listing" ? ethers.utils.formatUnits(details['buy']['data']['quantity'], details['buy']['data']['decimals']) : '0.14105'}</span>
+                                <span className="eth-amount">{pageName === "listing" ? ethers.utils.formatUnits(details['buy']['data']['quantity'], details['buy']['data']['decimals']) : ethers.utils.formatUnits(details?.orders?.sell_orders[0]?.buy_quantity, details?.orders?.sell_orders[0]?.buy_decimals)}</span>
 
                                 {/* <span className="usd-amount">($165.28 USD)</span> */}
                             </div>
@@ -104,7 +109,28 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                                 <button onClick={() => commonClick('Transfer')} className="invent-btns btn-position">Transfer</button>
                                 <button onClick={() => commonClick('Sell')} className="invent-btns btn-position">Sell</button>
                             </div>}
-                        </div>
+                        </div> : <div className="action-section not-for-sale-section"><div className="not-for-sale">Not For Sale</div></div>}
+                        {Object.keys(transferRes)?.length ? <div className="State-details">
+                            <label>Amount</label>
+                            <span>:</span>
+                            <span className='state-value'>{transferRes?.amount}</span>
+                            <label>Status</label>
+                            <span>:</span>
+                            <span className='state-value'>{transferRes?.status}</span>
+                            <label>To Address</label>
+                            <span>:</span>
+                            <span className='state-value'>{transferRes?.toAddress}</span>
+                            <label>Token Address</label>
+                            <span>:</span>
+                            <span className='state-value'>{transferRes?.tokenAddress}</span>
+                            <label>TX Id</label>
+                            <span>:</span>
+                            <span className='state-value'>{transferRes?.txId}</span>
+                            <label>Type</label>
+                            <span>:</span>
+                            <span className='state-value'>{transferRes?.type}</span>
+                        </div>:<></>}
+
                     </div>
                 </div>
             </div>

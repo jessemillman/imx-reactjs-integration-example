@@ -17,7 +17,9 @@
 
 .btn-position {
     text-align: center;
-    width: 16em;
+   height: 50px;
+   flex: 1;
+   border-radius: 8px;
 }
 
 .action-section {
@@ -115,10 +117,9 @@
 }
 
 .btn-style {
-    display: grid;
-    grid-template-columns: 0.3fr 0.3fr;
+    display: flex;
     grid-column-gap: 11px;
-    column-gap: 11px;
+
     margin-top: 10px;
 }
 
@@ -129,4 +130,10 @@
 
 .asset-img{
     place-content: center;
+}
+
+.not-for-sale-section .not-for-sale{
+
+    font-size: 20px;
+    font-weight: 700;
 }
