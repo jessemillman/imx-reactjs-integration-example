@@ -55,9 +55,9 @@ const App = () => {
     // const res = await link.setup({})
 
     setWallet(res.address)
-    const balnaceresponce:any = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
+    const balnaceresponce: any = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
     console.log('balnaceresponce', balnaceresponce)
-    balnaceresponce['data']['balance'] =  ethers.utils.formatUnits(balnaceresponce['data']['balance'],18);
+    balnaceresponce['data']['balance'] = ethers.utils.formatUnits(balnaceresponce['data']['balance'], 18);
     setBalance(balnaceresponce['data'])
 
     const syncStateObservable = await link.syncState({})
@@ -113,6 +113,17 @@ const App = () => {
     return setSidebar(value)
   };
 
+  const redirect = (btnName: any) => {
+    if (btnName == 'Start') {
+      window.open('https://docs.x.immutable.com/', '_blank', 'noopener,noreferrer');
+      // window.location.href = "";
+    } else if (btnName == 'Contact') {
+      window.open('https://www.immutable.com/contact', '_blank', 'noopener,noreferrer');
+      // window.location.href = "";
+    }
+
+  }
+
   return (
     <div className="App">
       <div className='sidebar'>
@@ -126,8 +137,8 @@ const App = () => {
               <h1>Powering the next generation of web3 games
               </h1>
               <div className='header-btn'>
-                <button className='button1' type="button">Start Building</button>
-                <button className='button2' type="button">Contact Us</button>
+                <button className='button1' onClick={(e) => redirect('Start')} type="button">Start Building</button>
+                <button className='button2' onClick={(e) => redirect('Contact')} type="button">Contact Us</button>
               </div>
             </div>
             <div className='logoframe'>
@@ -157,7 +168,7 @@ const App = () => {
                   element={(wallet && wallet !== "undefined") || item.skip ? <item.element client={client} selectedOrderId={selectedOrderId}
                     setSelectedOrderId={setSelectedOrderId}
                     link={link}
-                    wallet={wallet} sigin={linkSetup} stateDetails={statemaintain} details={assetdetail} setAssets ={setAssets} /> : <ConnectWalletSection />}
+                    wallet={wallet} sigin={linkSetup} stateDetails={statemaintain} details={assetdetail} setAssets={setAssets} /> : <ConnectWalletSection />}
                 >
                 </Route>
                 // )

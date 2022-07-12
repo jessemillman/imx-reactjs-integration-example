@@ -47,6 +47,7 @@
   padding:8px 27px;
   background: linear-gradient(to top left, #33ccff -2%, #ff99cc 99%);
   font-weight: 600;
+  cursor: pointer;
 }
 
 .header-btn .button1:hover {
@@ -67,6 +68,7 @@
   color: #fff;
   font-weight: 600;
   margin-left: 11px;
+  cursor: pointer;
 }
 
 .header-btn .button2:hover {

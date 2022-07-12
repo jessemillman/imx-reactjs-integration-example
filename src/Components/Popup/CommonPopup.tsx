@@ -61,8 +61,8 @@ const CommonPopup = ({ show, handleClose, headerName, ClickedButton, performFuct
                 </Modal.Body>
                 <Modal.Footer>
                     <>
-                        <button className='invent-btns' onClick={handleClose}>Close</button>
                         <button className='invent-btns' onClick={(a) => getValue()}>{ClickedButton == 'Transfer' ? 'Transfer' : 'Sell'}</button>
+                        <button className='invent-btns' onClick={handleClose}>Close</button>
                     </>
 
                 </Modal.Footer>

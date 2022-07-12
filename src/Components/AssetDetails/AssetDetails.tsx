@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType, ETHTokenType, ERC20TokenType } from '@imtbl/imx-sdk';
+import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType, ETHTokenType, ERC721TokenType } from '@imtbl/imx-sdk';
 import { useState } from "react";
 import './AssetDetails.css'
 import CommonPopup from '../../Components/Popup/CommonPopup';
@@ -50,7 +50,8 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
         if (input.screenName == 'Transfer') {
             const inputdata = {
                 amount: ethers.utils.formatUnits(details?.orders?.sell_orders[0]?.buy_quantity, details?.orders?.sell_orders[0]?.buy_decimals),
-                type: ETHTokenType.ETH,
+                type: ERC721TokenType.ERC721,
+                tokenId: details?.token_id,
                 tokenAddress: details?.token_address,
                 toAddress: input.Address,
             }
@@ -68,6 +69,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
             }
             const response = await link.sell(inputdata)
             console.log(response)
+            navigate('/inventory')
         }
 
         //navigate('/inventory');
