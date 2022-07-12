@@ -55,12 +55,12 @@
     margin-top: 0.8em;
 }
 
-.theader-signin h3{
+.theader-signin h3 {
     font-weight: 600;
     font-size: 17px;
 }
 
-.cust-position{
+.cust-position {
     margin-top: 1.5em;
 }
 
@@ -152,10 +152,16 @@
 
 .state-value {
     font-weight: 600;
+    width: 26em;
+    overflow-wrap: break-word;
 
 }
 
-.state-h3 h3{
+.state-h3 h3 {
     font-size: 19px;
     font-weight: 600;
+}
+
+.t-address {
+    width: 7em;
 }

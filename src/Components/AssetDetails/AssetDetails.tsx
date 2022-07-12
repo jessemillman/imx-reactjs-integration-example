@@ -120,7 +120,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                             <label>To Address</label>
                             <span>:</span>
                             <span className='state-value'>{transferRes?.toAddress}</span>
-                            <label>Token Address</label>
+                            <label className="t-address">Token Address</label>
                             <span>:</span>
                             <span className='state-value'>{transferRes?.tokenAddress}</span>
                             <label>TX Id</label>
