@@ -56,7 +56,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
             }
 
             const response = await link.transfer([inputdata])
-            setTransferRes(response?.result[0]?.status === "success" ? response?.result[0]?.status : {})
+            setTransferRes(response?.result[0]?.status === "success" ? response?.result[0] : {})
             console.log(response)
         } else if (input.screenName == 'Sell') {
             const inputdata = {
