@@ -147,7 +147,7 @@ button{
 }
 
 
-@media (max-width:800px) {
+@media only screen and (max-width:600px) {
   .sidebar {
     flex-direction: column;
   }
@@ -182,5 +182,101 @@ button{
 
   .card-split-invent{
     grid-template-columns: 1fr !important;
+  }
+
+  .top-header{
+    display: grid;
+    grid-template-columns:1fr !important;
+    place-items: center;
+    line-height: 2.5em;
+  }
+}
+
+@media only screen and (min-width:610px) and (max-width:800px) {
+  .sidebar {
+    flex-direction: column;
+  }
+
+  .card-split {
+    grid-template-columns: 0.3fr 0.3fr 0.3fr !important;
+  }
+
+  .cards {
+    padding: 0.5em !important;
+    margin: unset !important;
+    text-align: center;
+  }
+
+  .header-title{
+    grid-template-columns: 1fr !important;
+    height: unset !important;
+  }
+
+  .inline-controls{
+    grid-template-columns: unset !important;
+  }
+
+  .input-field{
+    margin-left: 10px !important;
+  }
+
+  .inline-mint{
+    padding: unset !important;
+    text-align: unset !important;
+  }
+
+  .card-split-invent{
+    grid-template-columns: 1fr !important;
+  }
+
+  .top-header{
+   
+   
+    line-height: 2.5em;
+  }
+}
+
+@media only screen and (min-width:810px) and (max-width:900px) {
+  .main-sidebar {
+    padding: 15px;
+    min-width: 273px ;
+  }
+
+  .card-split {
+    grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr !important;
+  }
+
+  .cards {
+    padding: 0.5em !important;
+    margin: unset !important;
+    text-align: center;
+  }
+
+  .header-title{
+    grid-template-columns: 1fr !important;
+    height: unset !important;
+  }
+
+  .inline-controls{
+    grid-template-columns: unset !important;
+  }
+
+  .input-field{
+    margin-left: 10px !important;
+  }
+
+  .inline-mint{
+    padding: unset !important;
+    text-align: unset !important;
+  }
+
+  .card-split-invent{
+    grid-template-columns: 1fr !important;
+  }
+
+  .top-header{
+   
+   
+    line-height: 2.5em;
   }
 }
