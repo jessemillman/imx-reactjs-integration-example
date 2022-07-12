@@ -190,6 +190,21 @@ button{
     place-items: center;
     line-height: 2.5em;
   }
+  .sigin-div{
+    grid-template-columns: 1fr !important;
+    padding: 20px;
+    row-gap: 2em;
+  }
+
+  .sigin-field{
+    min-width: 15.2em !important;
+  }
+  .theader-signin h3{
+    margin-left: unset !important;
+  }
+  .text-area{
+    width: 23.8em !important;
+  }
 }
 
 @media only screen and (min-width:610px) and (max-width:800px) {
@@ -233,6 +248,14 @@ button{
    
    
     line-height: 2.5em;
+  }
+  .sigin-div{
+    grid-template-columns: 1fr !important;
+    padding: 20px;
+    row-gap: 2em;
+  }
+  .theader-signin h3{
+    margin-left: unset !important;
   }
 }
 
@@ -278,5 +301,14 @@ button{
    
    
     line-height: 2.5em;
+  }
+
+  .sigin-div{
+    grid-template-columns: 1fr !important;
+    padding: 20px;
+    row-gap: 2em;
+  }
+  .theader-signin h3{
+    margin-left: unset !important;
   }
 }
