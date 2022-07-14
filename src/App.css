@@ -214,6 +214,11 @@ button{
     grid-template-columns:0.2fr !important;
     margin-left:unset !important
   }
+
+  .invent-btns{
+    margin-top: unset !important;
+    margin-bottom: 13px !important;
+  }
 }
 
 @media only screen and (min-width:610px) and (max-width:800px) {
@@ -280,6 +285,10 @@ button{
   .signin-input-controls{
     grid-template-columns:unset !important;
     margin-left:unset !important
+  }
+  .invent-btns{
+    margin-top: unset !important;
+    margin-bottom: 13px !important;
   }
 }
 
@@ -351,5 +360,10 @@ button{
   .signin-input-controls{
     /* grid-template-columns:0.2fr !important; */
     margin-left:unset !important
+  }
+
+  .invent-btns{
+    margin-top: unset !important;
+    margin-bottom: 13px !important;
   }
 }
