@@ -123,8 +123,8 @@ align-items: center;
 
 .hamburger-div {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   color: #fff;
   margin-left: 1em;
 }
@@ -218,6 +218,10 @@ button{
   .invent-btns{
     margin-top: unset !important;
     margin-bottom: 13px !important;
+  }
+
+  .hamburger-div{
+
   }
 }
 
