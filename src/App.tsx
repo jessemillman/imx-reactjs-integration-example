@@ -1,3 +1,4 @@
+
 import './App.css';
 import { Link, ImmutableXClient, SyncStateEventPayload, ProviderPreference } from '@imtbl/imx-sdk';
 import { getConfig, BalancesApi } from '@imtbl/core-sdk';
@@ -19,7 +20,7 @@ const App = () => {
   const networkType: any = process.env.REACT_APP_NETWORK_TYPE
   const config = getConfig(networkType);
   const balanceApi = new BalancesApi(config.api);
-
+const [selectedDetails,setSelectedDetails]=useState<any>(Object)
   // initialise Immutable X Link SDK
   const link = new Link(process.env.REACT_APP_ROPSTEN_LINK_URL)
 
@@ -31,16 +32,23 @@ const App = () => {
   const [sidebar, setSidebar] = useState(true)
   const [selectedOrderId, setSelectedOrderId] = useState('');
   const [statemaintain, setStatemaintain] = useState<any>([]);
-  const [assetdetail, setAssets] = useState();
+  // const [assetdetail, setAssets] = useState();
   const stateArr: any = [];
   useEffect(() => {
     // navigate('/listing')
     buildIMX()
   }, [])
 
+  const setAssets=(data:any)=>{
+    localStorage.setItem("assetdetail",JSON.stringify(data))
+  }
   useEffect(() => {
     // setStatemaintain(stateArr)
   }, [statemaintain])
+
+  useEffect(()=>{
+setSelectedDetails(JSON.parse(localStorage.getItem("assetdetail")||"{}"))
+  },[localStorage.getItem("assetdetail")])
 
   // initialise an Immutable X Client to interact with apis more easily
   async function buildIMX() {
@@ -53,12 +61,14 @@ const App = () => {
     // console.log('APP COMPONENT')
     const res = await link.setup({ providerPreference: ProviderPreference.NONE })
     // const res = await link.setup({})
-
+localStorage.setItem("address",res.address)
     setWallet(res.address)
     const balnaceresponce: any = await balanceApi.getBalance({ owner: res.address, address: 'eth' })
-    console.log('balnaceresponce', balnaceresponce)
     balnaceresponce['data']['balance'] = ethers.utils.formatUnits(balnaceresponce['data']['balance'], 18);
+    localStorage.setItem("balance",JSON.stringify(balnaceresponce['data']))
     setBalance(balnaceresponce['data'])
+
+    
 
     const syncStateObservable = await link.syncState({})
     syncStateObservable.subscribe((syncStateEvent: any) => {
@@ -69,6 +79,8 @@ const App = () => {
       // setTimeout(()=>{
       // stateArr.push(syncStateEvent)
       // console.log('inser', stateArr)
+      
+      localStorage.setItem("stateDetails",JSON.stringify(syncStateEvent))
       setStatemaintain([syncStateEvent])
       // },100)
 
@@ -78,7 +90,10 @@ const App = () => {
   };
   const disconnectWalletHandler = () => {
     setWallet('undefined')
-
+    localStorage.removeItem("address");
+    localStorage.removeItem("balance");
+    localStorage.removeItem("stateDetails");
+    localStorage.removeItem("assetdetail");
   }
 
   function handleTabs() {
@@ -124,10 +139,18 @@ const App = () => {
 
   }
 
+  const getSelectedDetails=()=>{
+   setSelectedDetails(JSON.parse(localStorage.getItem("assetdetail")||"{}"))
+   setBalance(JSON.parse(localStorage.getItem("balance")||"{}"))
+   setWallet(localStorage.getItem("address")||'undefined')
+   setStatemaintain(JSON.parse(localStorage.getItem("stateDetails")||'{}'))
+   
+  }
+
   return (
     <div className="App">
       <div className='sidebar'>
-        {sidebar && <Sidebar setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler} disconnectWalletHandler={disconnectWalletHandler} />}
+        {sidebar && <Sidebar setbalanceValue={balance} address={wallet} sigin={linkSetup} setSideHandler={setSidebarHandler} disconnectWalletHandler={disconnectWalletHandler} getSelectedDetails={getSelectedDetails} />}
         <div className='inner-section'>
           <div className='header-title'>
             {!sidebar && <div className='hamburger-div'>
@@ -168,7 +191,7 @@ const App = () => {
                   element={(wallet && wallet !== "undefined") || item.skip ? <item.element client={client} selectedOrderId={selectedOrderId}
                     setSelectedOrderId={setSelectedOrderId}
                     link={link}
-                    wallet={wallet} sigin={linkSetup} stateDetails={statemaintain} details={assetdetail} setAssets={setAssets} /> : <ConnectWalletSection />}
+                    wallet={localStorage.getItem("address")} sigin={linkSetup} stateDetails={[statemaintain]} details={selectedDetails} getSelectedDetails={getSelectedDetails} setAssets={setAssets} /> : <ConnectWalletSection />}
                 >
                 </Route>
                 // )

@@ -8,7 +8,7 @@ require('dotenv').config();
 interface InventoryProps {
   client: ImmutableXClient,
   link: Link,
-  wallet: string,
+  wallet: any,
   setAssets?: any,
 }
 
@@ -82,7 +82,7 @@ const Inventory = ({ client, link, wallet, setAssets }: InventoryProps) => {
   return (
    
     <div className='mint-div'>
-       {console.log(inventory?.result)}
+
       <div className='inline-mint'>
         <div className='theader-mint'>
           <h4 style={{ 'marginLeft': '21px' }}>  Sell asset (create sell order)</h4>
@@ -124,7 +124,6 @@ const Inventory = ({ client, link, wallet, setAssets }: InventoryProps) => {
             <div className='card-split-invent' >
               {inventory?.result?.map((val: any, i: any) => {
                 return val['image_url'] != null ? (
-                  // console.log(val),
                   <div key={i} className='cards' onClick={() => { setAssets(val); navigate(`/inventory/assets/${val.token_id}`) }} >
                     <img src={val?.image_url ?? ""} alt="profile" />
                     <p>{val?.name}</p>

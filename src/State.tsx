@@ -6,7 +6,7 @@ require('dotenv').config();
 interface StateProps {
     client: ImmutableXClient,
     link: Link,
-    wallet: string,
+    wallet: any,
     stateDetails?: any,
 }
 

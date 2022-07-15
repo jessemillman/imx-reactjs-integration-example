@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 interface InventoryProps {
-  wallet: string,
+  wallet: any,
   link: Link,
   selectedOrderId: string,
   setSelectedOrderId: any,
@@ -46,7 +46,6 @@ const Listings = ({ wallet, link, selectedOrderId, setSelectedOrderId, sigin, se
             type="button">Gods Unchained</button>
         </div>
         <div className='card-split'>
-          {console.log(userdata)}
           {
             userdata.map((user: any, key) => {
               return (

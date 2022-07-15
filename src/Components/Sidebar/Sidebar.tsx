@@ -9,12 +9,14 @@ interface Props {
     address: any,
     sigin: () => any;
     setSideHandler: (params: boolean) => any;
-    disconnectWalletHandler: () => any
+    disconnectWalletHandler: () => any;
+    getSelectedDetails:any
 }
 
-const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWalletHandler }: Props) => {
+const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWalletHandler,getSelectedDetails }: Props) => {
     const [sidebarTab, setSidebarTab] = useState("listing");
     const [addressDropdown, setAddressDropdown] = useState(false);
+
     let navigate = useNavigate()
     const location = useLocation();
     // const balance = ethers.utils.parseEther(setbalanceValue?.balance);
@@ -22,7 +24,9 @@ const Sidebar = ({ setbalanceValue, address, sigin, setSideHandler, disconnectWa
         setSidebarTab(location?.pathname?.split("/")[1])
     }, [location?.pathname])
 
-
+useEffect(()=>{
+    getSelectedDetails()
+},[])
     const dropDownuterClick = useOnclickOutside(() => {
         setAddressDropdown(false);
     });

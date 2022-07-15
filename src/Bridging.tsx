@@ -9,7 +9,7 @@ require('dotenv').config();
 interface BridgingProps {
   client: ImmutableXClient,
   link: Link,
-  wallet: string
+  wallet: any
 
 }
 
@@ -41,7 +41,6 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
     if (checkPath == 'withdrawal') {
       load()
     }
-    console.log(screenName)
   }, [location?.pathname])
 
   async function load(): Promise<void> {
@@ -121,7 +120,6 @@ const Bridging = ({ client, link, wallet }: BridgingProps) => {
     // console.log('APP COMPONENT')
     const res = await link.fiatToCrypto({})
    
-    console.log(res);
    
 
   };

@@ -7,7 +7,7 @@ require('dotenv').config();
 interface MintProps {
     client: ImmutableXClient,
     link: Link,
-    wallet: string,
+    wallet: any,
     setAssets?: any,
 }
 const Minting = ({ client, link, wallet, setAssets }: MintProps) => {

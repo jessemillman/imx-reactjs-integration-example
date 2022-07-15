@@ -6,7 +6,7 @@ require('dotenv').config();
 interface SigningProps {
     client: ImmutableXClient,
     link: Link,
-    wallet: string
+    wallet: any
 }
 
 const Signing = ({ client, link, wallet }: SigningProps) => {
@@ -20,8 +20,6 @@ const Signing = ({ client, link, wallet }: SigningProps) => {
         }).then((reponse) => {
             setResponse(reponse.result)
         });
-
-        console.log(test)
     }
 
 

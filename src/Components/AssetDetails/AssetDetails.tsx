@@ -1,16 +1,17 @@
 import { useParams } from "react-router-dom";
 import { Link, ImmutableXClient, ImmutableMethodResults, MintableERC721TokenType, ETHTokenType, ERC721TokenType } from '@imtbl/imx-sdk';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './AssetDetails.css'
 import CommonPopup from '../../Components/Popup/CommonPopup';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 interface AsserProps {
     client: ImmutableXClient,
     link: Link,
-    wallet: string,
+    wallet: any,
     sigin: () => any,
     details?: any;
+    getSelectedDetails?: any
 }
 type LocationState = {
     from: {
@@ -19,7 +20,7 @@ type LocationState = {
     }
 }
 
-const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
+const AssetDetails = ({ client, link, wallet, sigin, details, getSelectedDetails }: AsserProps) => {
 
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
@@ -27,11 +28,20 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
     const handleShow = () => setShow(true);
     const [clickedBtnValue, setClickedValue] = useState('Transfer');
     const [transferRes, setTransferRes] = useState<any>(Object);
+    const [data, setData] = useState(details);
     const { pageName, id } = useParams();
+
+    useEffect(() => {
+        setData({ ...details })
+    }, [details])
+
+    useEffect(() => {
+        getSelectedDetails()
+    }, [])
 
     async function buyNFT() {
         await link.buy({
-            orderIds: [details.order_id.toString()]
+            orderIds: [data?.order_id.toString()]
         })
     };
 
@@ -45,30 +55,27 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
 
     const actionClick = async (input: any) => {
         setShow(false)
-        console.log(input)
 
         if (input.screenName == 'Transfer') {
             const inputdata = {
-                amount: ethers.utils.formatUnits(details?.orders?.sell_orders[0]?.buy_quantity, details?.orders?.sell_orders[0]?.buy_decimals),
+                amount: ethers.utils.formatUnits(data?.orders?.sell_orders[0]?.buy_quantity, data?.orders?.sell_orders[0]?.buy_decimals),
                 type: ERC721TokenType.ERC721,
-                tokenId: details?.token_id,
-                tokenAddress: details?.token_address,
+                tokenId: data?.token_id,
+                tokenAddress: data?.token_address,
                 toAddress: input.Address,
             }
 
             const response = await link.transfer([inputdata])
             setTransferRes(response?.result[0]?.status === "success" ? response?.result[0] : {})
-            console.log(response)
         } else if (input.screenName == 'Sell') {
             const inputdata = {
-                tokenId: details?.token_id,
+                tokenId: data?.token_id,
                 amount: input.amount,
-                tokenAddress: details?.token_address
+                tokenAddress: data?.token_address
                 // tokenAddress: '0x2ca7e3fa937cae708c32bc2713c20740f3c4fc3b',
                 // currencyAddress: '0x4c04c39fb6d2b356ae8b06c47843576e32a1963e',
             }
             const response = await link.sell(inputdata)
-            console.log(response)
             navigate('/inventory')
         }
 
@@ -77,33 +84,33 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
     }
 
     return (<>
-        {console.log(details)}
-        <div className='mint-div asset'>
+        <div className='mint-div asset' key={data?.user}>
             <div className='inline-mint'>
                 <div className="main-asset">
                     <div className="img-section">
-                        <img src={pageName === "listing" ? details['sell']['data']['properties']['image_url'] : details.image_url}
+                        <img src={pageName === "listing" ? data?.sell?.data?.properties?.image_url : data?.image_url}
                             alt='test' />
                     </div>
                     <div className="detail-section">
                         <div className='sub-container'>
 
                             <img className='avatar-img'
-                                src={pageName === "listing" ? details['sell']['data']['properties']['collection']['icon_url'] : details['collection'].icon_url} alt="" />
+                                src={pageName === "listing" ? data?.sell?.data?.properties?.collection?.icon_url : data?.collection?.icon_url} alt="" />
 
-                            <span className='text-spn'>{pageName === "listing" ? details['sell']['data']['properties']['collection']['name'] : details['collection'].name}</span>
+                            <span className='text-spn'>{pageName === "listing" ? data?.sell?.data?.properties?.collection?.name : data?.collection?.name}</span>
                         </div>
                         <div>
-                            <h1>{pageName === "listing" ? details['sell']['data']['properties']['name'] : details.name}</h1>
+                            <h1>{pageName === "listing" ? data?.sell?.data?.properties?.name : data?.name}</h1>
                             <div className="own-div">
                                 <span className='own-label'>Owned by </span>
-                                <span className='eth-amount'>{details?.user?.slice(0, 8)}...{details?.user?.slice(-4)}</span>
+                                <span className='eth-amount'>{data?.user?.slice(0, 8)}...{data?.user?.slice(-4)}</span>
                             </div>
                         </div>
-                        {(details?.orders?.sell_orders[0]?.buy_quantity || details?.buy?.data?.quantity) ? <div className="action-section">
+
+                        {(data?.orders?.sell_orders[0]?.buy_quantity || data?.buy?.data?.quantity) ? <div className="action-section">
                             <div className="amount-section">
                                 <i className='fab fa-ethereum'></i>
-                                <span className="eth-amount">{pageName === "listing" ? ethers.utils.formatUnits(details['buy']['data']['quantity'], details['buy']['data']['decimals']) : ethers.utils.formatUnits(details?.orders?.sell_orders[0]?.buy_quantity, details?.orders?.sell_orders[0]?.buy_decimals)}</span>
+                                <span className="eth-amount">{pageName === "listing" ? data?.buy?.data?.quantity ? ethers?.utils?.formatUnits(data?.buy?.data?.quantity, data?.buy?.data?.decimals) : "" : data?.orders?.sell_orders[0]?.buy_quantity ? ethers.utils.formatUnits(data?.orders?.sell_orders[0]?.buy_quantity, data?.orders?.sell_orders[0]?.buy_decimals) : ""}</span>
 
                                 {/* <span className="usd-amount">($165.28 USD)</span> */}
                             </div>
@@ -112,7 +119,8 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                                 <button onClick={() => commonClick('Sell')} className="invent-btns btn-position">Sell</button>
                             </div>}
                         </div> : <div className="action-section not-for-sale-section"><div className="not-for-sale">Not For Sale</div></div>}
-                        {Object.keys(transferRes)?.length ? <div className="State-details">
+
+                        {Object.keys(transferRes)?.length ? <div className="State-data">
                             <label>Amount</label>
                             <span>:</span>
                             <span className='state-value'>{transferRes?.amount}</span>
@@ -131,7 +139,7 @@ const AssetDetails = ({ client, link, wallet, sigin, details }: AsserProps) => {
                             <label>Type</label>
                             <span>:</span>
                             <span className='state-value'>{transferRes?.type}</span>
-                        </div>:<></>}
+                        </div> : <></>}
 
                     </div>
                 </div>
