@@ -13,7 +13,7 @@ interface StateProps {
 
 const State = ({ client, link, wallet, stateDetails }: StateProps) => {
 
-    return (
+    return (console.log(stateDetails),
         <>
             <div className='mint-div'>
                 <div className='inline-mint'>
@@ -22,7 +22,7 @@ const State = ({ client, link, wallet, stateDetails }: StateProps) => {
                             <h3 style={{ 'marginLeft': '21px' }}>State Details</h3>
                         </div>
                         {
-                            stateDetails.map((state: any, key: any) => {
+                            stateDetails?.map((state: any, key: any) => {
                                 return (
                                     <div key={key} className="State-details">
                                         <label>Event Type</label>

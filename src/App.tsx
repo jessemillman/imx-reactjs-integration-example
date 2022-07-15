@@ -81,7 +81,7 @@ localStorage.setItem("address",res.address)
       // console.log('inser', stateArr)
       
       localStorage.setItem("stateDetails",JSON.stringify(syncStateEvent))
-      setStatemaintain([syncStateEvent])
+      setStatemaintain(syncStateEvent)
       // },100)
 
       // }
