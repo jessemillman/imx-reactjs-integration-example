@@ -94,6 +94,8 @@ localStorage.setItem("address",res.address)
     localStorage.removeItem("balance");
     localStorage.removeItem("stateDetails");
     localStorage.removeItem("assetdetail");
+    localStorage.removeItem("Result");
+    localStorage.removeItem("signinMessage");
   }
 
   function handleTabs() {

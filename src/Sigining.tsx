@@ -10,14 +10,21 @@ interface SigningProps {
 }
 
 const Signing = ({ client, link, wallet }: SigningProps) => {
-    const [signin, setSignin] = useState("");
-    const [Response, setResponse] = useState("");
+    const [signin, setSignin] = useState<any>("");
+    const [Response, setResponse] = useState<any>("");
+
+    useEffect(() => {
+        setResponse(localStorage.getItem('Result'))
+        setSignin(localStorage.getItem('signinMessage') !== null ?  localStorage.getItem('signinMessage') : '')
+    },[])
 
     const sigin = () => {
+        localStorage.setItem('signinMessage', signin)
         const test = link.sign({
             message: `${signin}`,
             description: 'Message that a user will see',
-        }).then((reponse) => {
+        }).then((reponse:any) => {
+            localStorage.setItem('Result', reponse.result)
             setResponse(reponse.result)
         });
     }
