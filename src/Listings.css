@@ -42,7 +42,7 @@
   
   .cards p {
     font-weight: bold;
-    margin-left: 28px;
+    text-align: center;
   }
   
   .avatar-img {
@@ -58,8 +58,8 @@
   }
   
   .card-split {
-    display: grid;
-    grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .active-btn{
@@ -79,7 +79,6 @@
   }
 
   .sub-container{
-    margin-left: 25px;
     display: flex;
     align-items: baseline;
   }

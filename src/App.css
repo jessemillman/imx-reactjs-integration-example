@@ -79,9 +79,9 @@
   background-image: url(./assets/images/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  display: grid;
-  grid-template-columns: 0fr 1fr 3fr;
+  display: flex;
   height: 16em;
+  justify-content: center;
 }
 
 
@@ -116,18 +116,10 @@ align-items: center;
   /* width: 100%;
   height: 100%; */
   padding: 2.7em;
-  height: 66vh;
   overflow-y: scroll;
   position: relative;
 }
 
-.hamburger-div {
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
-  color: #fff;
-  margin-left: 1em;
-}
 
 .pointer {
   cursor: pointer;
@@ -138,8 +130,7 @@ align-items: center;
 }
 
 .header-text-div {
-  margin-left: 42px;
-  margin-right: 13px
+  margin-right: 2vw;
 }
 
 button{
@@ -152,10 +143,7 @@ button{
     flex-direction: column;
   }
 
-  .card-split {
-    grid-template-columns: 0.3fr 0.3fr !important;
-  }
-
+  
   .cards {
     padding: 0.5em !important;
     margin: unset !important;
@@ -219,10 +207,6 @@ button{
     margin-top: unset !important;
     margin-bottom: 13px !important;
   }
-
-  .hamburger-div{
-
-  }
 }
 
 @media only screen and (min-width:610px) and (max-width:800px) {
@@ -230,9 +214,7 @@ button{
     flex-direction: column;
   }
 
-  .card-split {
-    grid-template-columns: 0.3fr 0.3fr 0.3fr !important;
-  }
+
 
   .cards {
     padding: 0.5em !important;
@@ -299,12 +281,10 @@ button{
 @media only screen and (min-width:810px) and (max-width:900px) {
   .main-sidebar {
     padding: 15px;
-    min-width: 273px ;
+    min-width: 15vw ;
   }
 
-  .card-split {
-    grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr !important;
-  }
+
 
   .cards {
     padding: 0.5em !important;

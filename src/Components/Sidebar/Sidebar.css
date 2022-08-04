@@ -1,7 +1,4 @@
 .logo {
-    padding-left: 1em;
-    padding-top: 0em;
-    padding-bottom: 1.5em;
 }
 
 li span {
@@ -55,17 +52,17 @@ button:focus {
 
 .main-sidebar {
     padding: 15px;
-    min-width: 236px;
+    min-width: 15vw;
 }
 
 .sidebar-options {
     list-style-type: none;
-    margin-top: 62px;
+    margin-top: 2vh;
     border-top: 1px solid #686565;
 }
 
 .sidebar-options i {
-    margin-right: 1em;
+    margin-right: 1vw;
     color: #fff;
 }
 
@@ -98,7 +95,11 @@ button:focus {
 }
 
 .main-sidebar .hamburger-div {
-    justify-content: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-left: 1em;
 }
 
 .main-sidebar .hamburger-div svg {
@@ -106,8 +107,7 @@ button:focus {
 }
 
 .sidebar-options li {
-    margin: 11px 0px;
-    padding: 3px 0px;
+    margin: 2vh 0px;
 }
 
 .sidebar-options .active-tab i,
@@ -133,11 +133,10 @@ button:focus {
     cursor: pointer;
 }
 
-.sigin-btn {
-    margin-top: 48px;
-    margin-left: 4px;
-    display: inline-block;
-    position: relative;
+.signin-btn {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
 }
 
 .address-text {
